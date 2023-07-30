@@ -4,7 +4,7 @@ import { client } from "../utils/contentful/client"
 import { EntryCollection, EntrySkeletonType } from "contentful"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { setContent } from "../redux/slices/contentSlice"
+import { setContent, setEnv } from "../redux/slices/contentSlice"
 
 export const getStaticProps: GetStaticProps = async () => {
   const response: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -13,16 +13,19 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       content: response.items[0].fields,
+      environment: response.items[0].sys.environment.sys.id,
     },
     revalidate: parseInt(process.env.NEXT_REVALIDATION_TIME ?? "3600"),
   }
 }
 
-export default function Home({ content }: any) {
+export default function Home({ content, environment }: any) {
   const dispatch = useDispatch()
+  console.log(environment)
 
   useEffect(() => {
     dispatch(setContent(content))
+    dispatch(setEnv(environment))
   }, [content])
 
   return (
