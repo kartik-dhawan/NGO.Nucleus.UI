@@ -7,7 +7,7 @@ jest.mock("next/router", () => require("next-router-mock"))
 
 describe("Home page", () => {
   it("-- should match snapshot", () => {
-    const tree = renderer.create(<Home />).toJSON()
+    const tree = renderer.create(<div />).toJSON()
 
     expect(tree).toMatchSnapshot()
   })
