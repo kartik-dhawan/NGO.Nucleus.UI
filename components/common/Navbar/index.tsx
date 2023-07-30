@@ -1,4 +1,4 @@
-import { Box, Button, SwipeableDrawer, Typography } from "@mui/material"
+import { Box, Button, Drawer, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
 import Image from "next/image"
@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const toggleMenu = useCallback(() => {
     setOpenMenu((state) => !state)
-  }, [openMenu])
+  }, [])
 
   return (
     <Box className="robotoCondensed" component="nav" sx={styles.navbarWrapper}>
@@ -52,12 +52,7 @@ const Navbar = () => {
           </Link>
         )}
       </Box>
-      <SwipeableDrawer
-        anchor="right"
-        open={openMenu}
-        onClose={toggleMenu}
-        onOpen={toggleMenu}
-      >
+      <Drawer anchor="right" open={openMenu} onClose={toggleMenu}>
         <NavList orientation="mobile" />
         <Button
           disableRipple
@@ -67,7 +62,7 @@ const Navbar = () => {
         >
           Close
         </Button>
-      </SwipeableDrawer>
+      </Drawer>
     </Box>
   )
 }

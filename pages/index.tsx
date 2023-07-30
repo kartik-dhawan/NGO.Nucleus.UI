@@ -26,7 +26,7 @@ export default function Home({ content, environment }: HomePageProps) {
   useEffect(() => {
     dispatch(setContent(content))
     dispatch(setEnv(environment))
-  }, [content])
+  }, [content, dispatch])
 
   return (
     <div>
