@@ -3,6 +3,8 @@ import "../styles/index.scss"
 import Layout from "../components/Layout"
 import { useRouter } from "next/router"
 import { PAGES_WITH_NO_NAVBAR } from "../utils/constants"
+import { Provider } from "react-redux"
+import store from "../redux/store"
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -11,9 +13,11 @@ export default function App({ Component, pageProps }: AppProps) {
     return <Component {...pageProps} />
   } else {
     return (
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
     )
   }
 }

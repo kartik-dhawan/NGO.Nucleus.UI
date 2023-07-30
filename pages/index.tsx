@@ -2,6 +2,9 @@ import Head from "next/head"
 import { GetStaticProps } from "next"
 import { client } from "../utils/contentful/client"
 import { EntryCollection, EntrySkeletonType } from "contentful"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { setContent } from "../redux/slices/contentSlice"
 
 export const getStaticProps: GetStaticProps = async () => {
   const response: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -16,7 +19,12 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function Home({ content }: any) {
-  console.log(content)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setContent(content))
+  }, [content])
+
   return (
     <div>
       <Head>
