@@ -1,5 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { ContentFulENV, ContentStateType } from "../stateInterfaces"
+import {
+  ContentFulENV,
+  ContentStateType,
+  ContentfulVariable,
+} from "../stateInterfaces"
 
 const initialState: ContentStateType = {
   content: {},
@@ -12,7 +16,7 @@ const contentSlice = createSlice({
   reducers: {
     setContent: (
       state: ContentStateType,
-      action: PayloadAction<ContentStateType>,
+      action: PayloadAction<ContentfulVariable>,
     ) => {
       state.content = action.payload
     },
