@@ -1,6 +1,4 @@
-import { CustomStyles } from "../../../../utils/interfaces"
-
-export const styles: CustomStyles = {
+export const styles = {
   navbarWrapper: {
     display: "flex",
     margin: 0,
@@ -53,6 +51,37 @@ export const styles: CustomStyles = {
     "& > svg": {
       fontSize: "18px",
       margin: "0px 8px 0px 0px",
+    },
+  },
+  closeMenuButton: {
+    textTransform: "capitalize",
+    fontSize: "1rem",
+    textDecoration: "underline",
+    color: "#111",
+  },
+  mobileDonateButton: {
+    backgroundColor: "#fcef48",
+    "&:hover": {
+      backgroundColor: "#fcef48",
+    },
+    display: {
+      xs: "flex",
+      md: "none",
+    },
+  },
+  openMenuButton: {
+    color: "#111",
+    textTransform: "capitalize",
+    fontWeight: 700,
+    fontSize: "1rem",
+    padding: "8px 24px",
+    display: {
+      xs: "flex",
+      md: "none",
+    },
+    marginLeft: "auto",
+    "&:hover": {
+      backgroundColor: "#fff898",
     },
   },
 }

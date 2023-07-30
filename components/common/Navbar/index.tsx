@@ -1,17 +1,24 @@
-import { Box, List, ListItem, Typography } from "@mui/material"
+import { Box, Button, SwipeableDrawer, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
 import Image from "next/image"
-import { NavbarItem } from "../../../utils/interfaces"
 import Link from "next/link"
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import { styles } from "./styles"
+import { useCallback, useState } from "react"
+import NavList from "./NavList"
 
 const Navbar = () => {
+  const [openMenu, setOpenMenu] = useState<boolean>(false)
+
   const { content } = useSelector((state: RootType) => state.contentSlice)
+  const navbarListLength = content.navbarItems?.length ?? 4
+
+  const toggleMenu = useCallback(() => {
+    setOpenMenu((state) => !state)
+  }, [openMenu])
 
   return (
-    <Box className="navbarWrapper" component="nav" sx={styles.navbarWrapper}>
+    <Box className="robotoCondensed" component="nav" sx={styles.navbarWrapper}>
       <Box sx={styles.navbarAppTitleWrapper}>
         <Image
           src={content?.appIcon?.fields.file.url}
@@ -21,23 +28,46 @@ const Navbar = () => {
         />
         <Typography sx={styles.navbarTitle}>{content.appTitle}</Typography>
       </Box>
-      <List sx={styles.navbarItemsWrapper}>
-        {content.navbarItems?.map((item: NavbarItem) => {
-          return (
-            <ListItem
-              key={item.id}
-              sx={{
-                ...styles.navbarItem,
-                borderLeft: item.id < 4 ? "0.5px solid #222" : "none",
-                borderRight: item.id > 4 ? "0.5px solid #222" : "none",
-              }}
-            >
-              {item.id === 4 && <LockOutlinedIcon />}
-              <Link href={item.url}>{item.label}</Link>
-            </ListItem>
-          )
-        })}
-      </List>
+      {/* below list only for desktop navbar */}
+      <NavList orientation="desktop" />
+      {/* below section for mobile navbar */}
+      {/* Menu button only visible in portrait-tablets/mobiles */}
+      <Button
+        disableRipple
+        className="robotoCondensed"
+        onClick={toggleMenu}
+        sx={styles.openMenuButton}
+      >
+        Menu
+      </Button>
+      <Box
+        sx={{
+          ...styles.navbarItem,
+          ...styles.mobileDonateButton,
+        }}
+      >
+        {content.navbarItems && (
+          <Link href={content.navbarItems[navbarListLength - 1].url}>
+            {content.navbarItems[navbarListLength - 1].label}
+          </Link>
+        )}
+      </Box>
+      <SwipeableDrawer
+        anchor="right"
+        open={openMenu}
+        onClose={toggleMenu}
+        onOpen={toggleMenu}
+      >
+        <NavList orientation="mobile" />
+        <Button
+          disableRipple
+          onClick={toggleMenu}
+          sx={styles.closeMenuButton}
+          className="robotoCondensed"
+        >
+          Close
+        </Button>
+      </SwipeableDrawer>
     </Box>
   )
 }
