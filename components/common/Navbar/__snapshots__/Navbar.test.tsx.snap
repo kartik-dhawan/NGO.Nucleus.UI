@@ -53,13 +53,13 @@ exports[`Navbar component -- should render correctly 1`] = `
     <style
       dangerouslySetInnerHTML={
         {
-          "__html": ".css-eorn8h-MuiList-root{list-style:none;margin:0;padding:0;position:relative;padding-top:8px;padding-bottom:8px;padding:0px;width:100%;}@media (min-width:0px){.css-eorn8h-MuiList-root{display:none;}}@media (min-width:900px){.css-eorn8h-MuiList-root{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}.css-eorn8h-MuiList-root>li:nth-of-type(5){margin-left:auto;}.css-eorn8h-MuiList-root>li:last-child{background-color:#fcef48;}",
+          "__html": ".css-1fpihtw-MuiList-root{list-style:none;margin:0;padding:0;position:relative;padding-top:8px;padding-bottom:8px;padding:0px;width:100%;}@media (min-width:0px){.css-1fpihtw-MuiList-root{display:none;}}@media (min-width:900px){.css-1fpihtw-MuiList-root{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}.css-1fpihtw-MuiList-root>a:nth-of-type(5){margin-left:auto;}.css-1fpihtw-MuiList-root>a:last-child{background-color:#fcef48;}",
         }
       }
-      data-emotion="css eorn8h-MuiList-root"
+      data-emotion="css 1fpihtw-MuiList-root"
     />
     <ul
-      className="MuiList-root MuiList-padding css-eorn8h-MuiList-root"
+      className="MuiList-root MuiList-padding css-1fpihtw-MuiList-root"
     />
     <style
       dangerouslySetInnerHTML={
@@ -101,21 +101,10 @@ exports[`Navbar component -- should render correctly 1`] = `
     <style
       dangerouslySetInnerHTML={
         {
-          "__html": ".css-1dpcd5s{width:-webkit-max-content;width:-moz-max-content;width:max-content;padding:8px 24px;background-color:#fcef48;}@media (min-width:0px){.css-1dpcd5s{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}@media (min-width:900px){.css-1dpcd5s{display:none;}}.css-1dpcd5s:hover{background-color:#fcef48;}.css-1dpcd5s>a{color:#111;-webkit-text-decoration:none;text-decoration:none;-webkit-transition:200ms all ease;transition:200ms all ease;font-weight:700;height:100%;width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.css-1dpcd5s>svg{font-size:18px;margin:0px 8px 0px 0px;}",
+          "__html": ".css-1tz4fy1-MuiDrawer-root{z-index:1200;}@media (min-width:900px){.css-1tz4fy1-MuiDrawer-root{display:none;}}",
         }
       }
-      data-emotion="css 1dpcd5s"
-    />
-    <div
-      className="MuiBox-root css-1dpcd5s"
-    />
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-j8ofbm-MuiDrawer-root{z-index:1200;}",
-        }
-      }
-      data-emotion="css j8ofbm-MuiDrawer-root"
+      data-emotion="css 1tz4fy1-MuiDrawer-root"
     />
   </nav>,
 ]

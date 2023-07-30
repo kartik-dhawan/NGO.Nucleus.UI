@@ -44,16 +44,27 @@ const NavList = ({ orientation }: NavListProps) => {
           width: "100%",
           display: "flex",
           flexDirection: "row-reverse",
+          justifyContent: "flex-end",
           padding: "16px",
         }
         return (
-          <ListItem
+          <Link
+            href={item.url}
             key={item.id}
-            sx={orientation === "desktop" ? desktopStyles : mobileNavItemStyles}
+            style={{
+              textDecoration: "none",
+              width: orientation === "mobile" ? "100%" : "max-content",
+            }}
           >
-            {item.id === 4 && <LockOutlinedIcon />}
-            <Link href={item.url}>{item.label}</Link>
-          </ListItem>
+            <ListItem
+              sx={
+                orientation === "desktop" ? desktopStyles : mobileNavItemStyles
+              }
+            >
+              {item.id === 4 && <LockOutlinedIcon />}
+              {item.label}
+            </ListItem>
+          </Link>
         )
       })}
     </List>

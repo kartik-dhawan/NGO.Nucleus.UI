@@ -33,33 +33,32 @@ export const styles = {
     },
     padding: 0,
     width: "100%",
-    "& > li:nth-of-type(5)": {
+    "& > a:nth-of-type(5)": {
       marginLeft: "auto",
     },
-    "& > li:last-child": {
+    "& > a:last-child": {
       backgroundColor: "#fcef48",
     },
   },
   navbarItem: {
-    width: "max-content",
+    width: "100%",
     padding: "8px 24px",
     "&:hover": {
       color: "#555",
       backgroundColor: "#fff898",
     },
-    "& > a": {
-      color: "#111",
-      textDecoration: "none",
-      transition: "200ms all ease",
-      fontWeight: 700,
-      height: "100%",
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
-    },
+    color: "#111",
+    height: "100%",
+    transition: "200ms all ease",
+    fontWeight: 700,
+    display: "flex",
+    alignItems: "center",
     "& > svg": {
       fontSize: "18px",
-      margin: "0px 8px 0px 0px",
+      margin: {
+        xs: "0px 0px 0px auto",
+        md: "0px 8px 0px 0px",
+      },
     },
   },
   closeMenuButton: {
@@ -77,6 +76,10 @@ export const styles = {
       xs: "flex",
       md: "none",
     },
+    width: "max-content",
+    color: "#111",
+    textDecoration: "none",
+    padding: "0px 24px",
   },
   openMenuButton: {
     color: "#111",

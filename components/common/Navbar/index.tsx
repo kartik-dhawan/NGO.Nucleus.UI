@@ -40,19 +40,32 @@ const Navbar = () => {
       >
         Menu
       </Button>
-      <Box
+
+      {content.navbarItems && (
+        <Link
+          href={content.navbarItems[navbarListLength - 1].url}
+          style={{ textDecoration: "none" }}
+        >
+          <Box
+            sx={{
+              ...styles.navbarItem,
+              ...styles.mobileDonateButton,
+            }}
+          >
+            {content.navbarItems[navbarListLength - 1].label}
+          </Box>
+        </Link>
+      )}
+      <Drawer
+        anchor="right"
+        open={openMenu}
+        onClose={toggleMenu}
         sx={{
-          ...styles.navbarItem,
-          ...styles.mobileDonateButton,
+          display: {
+            md: "none",
+          },
         }}
       >
-        {content.navbarItems && (
-          <Link href={content.navbarItems[navbarListLength - 1].url}>
-            {content.navbarItems[navbarListLength - 1].label}
-          </Link>
-        )}
-      </Box>
-      <Drawer anchor="right" open={openMenu} onClose={toggleMenu}>
         <NavList orientation="mobile" />
         <Button
           disableRipple
