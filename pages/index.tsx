@@ -5,6 +5,7 @@ import { EntryCollection, EntrySkeletonType } from "contentful"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setContent, setEnv } from "../redux/slices/contentSlice"
+import { HomePageProps } from "../utils/interfaces"
 
 export const getStaticProps: GetStaticProps = async () => {
   const response: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -19,14 +20,13 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function Home({ content, environment }: any) {
+export default function Home({ content, environment }: HomePageProps) {
   const dispatch = useDispatch()
-  console.log(environment)
 
   useEffect(() => {
     dispatch(setContent(content))
     dispatch(setEnv(environment))
-  }, [content])
+  }, [content, dispatch, environment])
 
   return (
     <div>
@@ -36,7 +36,9 @@ export default function Home({ content, environment }: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>NGO NUCLEUS</main>
+      <main>
+        <pre>home</pre>
+      </main>
     </div>
   )
 }
