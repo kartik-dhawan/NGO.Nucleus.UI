@@ -16,13 +16,13 @@ exports[`Navbar component -- should render correctly 1`] = `
     <style
       dangerouslySetInnerHTML={
         {
-          "__html": ".css-2qyq2o{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:4px;margin:0px 32px;padding:8px 0px;}.css-2qyq2o>img{height:40px;width:40px;}",
+          "__html": ".css-q2mcz2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:4px;padding:8px 0px;}@media (min-width:0px){.css-q2mcz2{margin:0px 8px;}}@media (min-width:900px){.css-q2mcz2{margin:0px 28px;}}.css-q2mcz2>img{height:40px;width:40px;}",
         }
       }
-      data-emotion="css 2qyq2o"
+      data-emotion="css q2mcz2"
     />
     <div
-      className="MuiBox-root css-2qyq2o"
+      className="MuiBox-root css-q2mcz2"
     >
       <img
         data-nimg="1"
@@ -41,13 +41,13 @@ exports[`Navbar component -- should render correctly 1`] = `
       <style
         dangerouslySetInnerHTML={
           {
-            "__html": ".css-1rdow6t-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;width:5rem;}",
+            "__html": ".css-z829vz-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;width:5rem;}@media (min-width:0px){.css-z829vz-MuiTypography-root{font-size:14px;}}@media (min-width:900px){.css-z829vz-MuiTypography-root{font-size:16px;}}",
           }
         }
-        data-emotion="css 1rdow6t-MuiTypography-root"
+        data-emotion="css z829vz-MuiTypography-root"
       />
       <p
-        className="MuiTypography-root MuiTypography-body1 css-1rdow6t-MuiTypography-root"
+        className="MuiTypography-root MuiTypography-body1 css-z829vz-MuiTypography-root"
       />
     </div>
     <style

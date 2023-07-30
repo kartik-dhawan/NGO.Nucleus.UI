@@ -13,10 +13,19 @@ export const styles = {
     display: "flex",
     alignItems: "center",
     gap: "4px",
-    margin: "0px 32px",
+    margin: {
+      xs: "0px 8px",
+      md: "0px 28px",
+    },
     padding: "8px 0px",
   },
-  navbarTitle: { width: "5rem" },
+  navbarTitle: {
+    width: "5rem",
+    fontSize: {
+      xs: "14px",
+      md: "16px",
+    },
+  },
   navbarItemsWrapper: {
     display: {
       xs: "none",

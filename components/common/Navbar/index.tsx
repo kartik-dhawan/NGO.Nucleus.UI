@@ -11,7 +11,7 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false)
 
   const { content } = useSelector((state: RootType) => state.contentSlice)
-  const navbarListLength = content.navbarItems?.length ?? 4
+  const navbarListLength = (content && content.navbarItems?.length) ?? 4
 
   const toggleMenu = useCallback(() => {
     setOpenMenu((state) => !state)
