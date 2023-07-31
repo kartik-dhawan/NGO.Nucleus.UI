@@ -69,11 +69,11 @@ export const styles = {
   },
   heroLandingSectionButton: {
     fontSize: "14px",
-    fontWeight: "bold",
+    fontWeight: "400",
     color: "#d9d9d9",
     backgroundColor: "#111",
     borderRadius: "10000px",
-    padding: "12px 20px 12px 24px",
+    padding: "8px 16px 8px 20px",
     margin: "12px 0px",
     textTransform: "capitalize",
     "& > svg": {
@@ -81,6 +81,8 @@ export const styles = {
       marginLeft: "12px",
     },
     "&:hover": {
+      color: "#d9d9d9",
+      backgroundColor: "#111",
       "& > svg": {
         transform: "translateX(12px)",
       },

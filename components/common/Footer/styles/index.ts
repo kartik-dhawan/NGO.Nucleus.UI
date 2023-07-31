@@ -23,6 +23,7 @@ export const styles = {
     padding: "2rem",
   },
   footerContactCardWrapper: {
+    position: "relative",
     "& > img": {
       flex: 1,
       display: {

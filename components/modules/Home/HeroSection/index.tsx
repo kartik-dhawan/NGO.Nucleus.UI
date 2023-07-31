@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux"
 import { RootType } from "../../../../redux/store"
-import { Box, Button } from "@mui/material"
+import { Box } from "@mui/material"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image"
 import { styles } from "./styles"
+import PrimaryButton from "../../../common/Buttons/PrimaryButton"
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt"
 
 const HeroSection = () => {
@@ -38,10 +39,9 @@ const HeroSection = () => {
                   documentToReactComponents(content?.heroLandingSectionBody)}
                 {index === 1 &&
                   documentToReactComponents(content?.heroQuoteSectionBody)}
-                <Button disableRipple sx={styles.heroLandingSectionButton}>
-                  {content.heroLandingSectionButtonText[index]}{" "}
-                  <ArrowRightAltIcon />
-                </Button>
+                <PrimaryButton icon={<ArrowRightAltIcon />}>
+                  {content.heroLandingSectionButtonText[index]}
+                </PrimaryButton>
               </Box>
               <Box></Box>
             </Box>

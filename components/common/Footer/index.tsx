@@ -1,8 +1,9 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material"
+import { Box, FormHelperText, Grid, TextField, Typography } from "@mui/material"
 import Image from "next/image"
 import { useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
 import { styles } from "./styles"
+import PrimaryButton from "../Buttons/PrimaryButton"
 
 const Footer = () => {
   const { content } = useSelector((state: RootType) => state.contentSlice)
@@ -70,13 +71,15 @@ const Footer = () => {
                   label="Email"
                 />
               </Grid>
-              <Grid item xs={6}>
-                <Button>Get a call</Button>
+              <Grid item xs={6} marginTop={2}>
+                <PrimaryButton>Get a call!!</PrimaryButton>
               </Grid>
             </Grid>
-            {/* <FormHelperText id="my-helper-text">
-              We'll never share your email.
-            </FormHelperText> */}
+            <FormHelperText
+              sx={{ position: "absolute", bottom: "20px", right: "24px" }}
+            >
+              We&lsquo;ll never share your email or contact number.
+            </FormHelperText>
           </Box>
         </Box>
       </Box>
