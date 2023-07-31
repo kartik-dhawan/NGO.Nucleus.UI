@@ -59,4 +59,23 @@ export const styles = {
       objectPosition: "50% 30%",
     },
   },
+  heroLandingSectionButton: {
+    fontSize: "14px",
+    fontWeight: "bold",
+    color: "#d9d9d9",
+    backgroundColor: "#111",
+    borderRadius: "10000px",
+    padding: "12px 20px 12px 24px",
+    margin: "12px 0px",
+    textTransform: "capitalize",
+    "& > svg": {
+      transition: "550ms all ease",
+      marginLeft: "12px",
+    },
+    "&:hover": {
+      "& > svg": {
+        transform: "translateX(12px)",
+      },
+    },
+  },
 }

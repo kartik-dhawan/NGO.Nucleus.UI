@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux"
 import { RootType } from "../../../../redux/store"
-import { Box, Typography } from "@mui/material"
+import { Box, IconButton, Typography } from "@mui/material"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image"
 import { styles } from "./styles"
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt"
 
 const HeroSection = () => {
   const { content } = useSelector((state: RootType) => state.contentSlice)
@@ -38,6 +39,13 @@ const HeroSection = () => {
                     documentToReactComponents(content?.heroLandingSectionBody)}
                   {index === 1 &&
                     documentToReactComponents(content?.heroQuoteSectionBody)}
+                  <IconButton
+                    disableRipple
+                    sx={styles.heroLandingSectionButton}
+                  >
+                    {content.heroLandingSectionButtonText[index]}{" "}
+                    <ArrowRightAltIcon />
+                  </IconButton>
                 </Typography>
                 <Box></Box>
               </Box>
