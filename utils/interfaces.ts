@@ -24,3 +24,9 @@ export interface NavbarItem {
   url: string
   authentication?: boolean
 }
+
+export interface ContactFormData {
+  name: string
+  email: string
+  contactNumber: string
+}

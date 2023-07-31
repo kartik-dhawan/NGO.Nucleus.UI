@@ -1,11 +1,25 @@
-import { Box, FormHelperText, Grid, TextField, Typography } from "@mui/material"
+import { Box, FormHelperText, Grid, Typography } from "@mui/material"
 import Image from "next/image"
 import { useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
 import { styles } from "./styles"
 import PrimaryButton from "../Buttons/PrimaryButton"
+import CustomTextField from "../CustomTextfield"
+import { useState } from "react"
+import { ContactFormData } from "../../../utils/interfaces"
+
+const initialState: ContactFormData = {
+  name: "",
+  email: "",
+  contactNumber: "",
+}
 
 const Footer = () => {
+  const [contactFormData, setContactFormData] =
+    useState<ContactFormData>(initialState)
+
+  console.log(contactFormData)
+
   const { content } = useSelector((state: RootType) => state.contentSlice)
 
   return (
@@ -42,6 +56,7 @@ const Footer = () => {
               className="poppins"
               sx={{
                 boxSizing: "border-box",
+                gap: "8px",
               }}
             >
               <Grid
@@ -51,24 +66,39 @@ const Footer = () => {
                 xs={12}
                 sx={styles.contactUsFormNameField}
               >
-                <TextField
-                  sx={styles.formTextField}
-                  variant="standard"
+                <CustomTextField
                   label="Name"
+                  value={contactFormData.name}
+                  onChange={(e: any) => {
+                    setContactFormData({
+                      ...contactFormData,
+                      name: e.target.value,
+                    })
+                  }}
                 />
               </Grid>
               <Grid item md={5} sm={5} xs={12}>
-                <TextField
-                  sx={styles.formTextField}
-                  variant="standard"
-                  label="Phone Number"
+                <CustomTextField
+                  label="Contact Number"
+                  value={contactFormData.contactNumber}
+                  onChange={(e: any) => {
+                    setContactFormData({
+                      ...contactFormData,
+                      contactNumber: e.target.value,
+                    })
+                  }}
                 />
               </Grid>
               <Grid item md={12} sm={12} xs={12}>
-                <TextField
-                  sx={styles.formTextField}
-                  variant="standard"
+                <CustomTextField
                   label="Email"
+                  value={contactFormData.email}
+                  onChange={(e: any) => {
+                    setContactFormData({
+                      ...contactFormData,
+                      email: e.target.value,
+                    })
+                  }}
                 />
               </Grid>
               <Grid item xs={6} marginTop={2}>
