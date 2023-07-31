@@ -3,7 +3,13 @@ export const styles = {
     display: "flex",
     margin: 0,
     padding: 0,
-    borderBottom: "0.5px solid #222",
+    borderBottom: "0.5px solid #999",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+    backgroundColor: "#fff",
   },
   navbarAppTitleWrapper: {
     "& > img": {
@@ -44,7 +50,6 @@ export const styles = {
     width: "100%",
     padding: "8px 24px",
     "&:hover": {
-      color: "#555",
       backgroundColor: "#fff898",
     },
     color: "#111",
