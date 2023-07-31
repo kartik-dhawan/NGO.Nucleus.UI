@@ -31,10 +31,16 @@ export const styles = {
         md: "inherit",
         height: {
           xs: "300px",
-          lg: "250px",
+          lg: "450px",
         },
-        width: "250px",
-        objectFit: "cover",
+        width: {
+          xs: "300px",
+          lg: "450px",
+        },
+        objectFit: {
+          xs: "cover",
+          xl: "contain",
+        },
         objectPosition: "0% 80%",
       },
     },
@@ -110,5 +116,18 @@ export const styles = {
     "& > label.Mui-focused": {
       color: "#751d1d",
     },
+  },
+  contactFormHelperText: {
+    position: "absolute",
+    bottom: "20px",
+    right: {
+      xs: "50%",
+      sm: "24px",
+    },
+    transform: {
+      xs: "translateX(50%)",
+      sm: "none",
+    },
+    width: "max-content",
   },
 }

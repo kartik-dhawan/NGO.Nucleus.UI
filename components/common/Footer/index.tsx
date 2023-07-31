@@ -106,10 +106,8 @@ const Footer = () => {
                 <PrimaryButton>Get a call!!</PrimaryButton>
               </Grid>
             </Grid>
-            <FormHelperText
-              sx={{ position: "absolute", bottom: "20px", right: "24px" }}
-            >
-              We&lsquo;ll never share your email or contact number.
+            <FormHelperText sx={styles.contactFormHelperText}>
+              We&lsquo;ll never share your contact anywhere.
             </FormHelperText>
           </Box>
         </Box>
