@@ -20,12 +20,14 @@ const Navbar = () => {
   return (
     <Box className="robotoCondensed" component="nav" sx={styles.navbarWrapper}>
       <Box sx={styles.navbarAppTitleWrapper}>
-        <Image
-          src={content?.appIcon?.fields.file.url}
-          alt={content?.appIcon?.fields.description}
-          height={32}
-          width={32}
-        />
+        {content?.appIcon && (
+          <Image
+            src={content?.appIcon?.fields.file.url}
+            alt={content?.appIcon?.fields.description}
+            height={32}
+            width={32}
+          />
+        )}
         <Typography sx={styles.navbarTitle}>{content.appTitle}</Typography>
       </Box>
       {/* below list only for desktop navbar */}

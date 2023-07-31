@@ -31,8 +31,16 @@ export const styles = {
         xs: "32px",
         xl: "38px",
       },
+      lineHeight: {
+        xs: "42px",
+        xl: "46px",
+      },
     },
     "& p": {
+      lineHeight: {
+        xs: "27px",
+        xl: "30px",
+      },
       fontSize: {
         xs: "18px",
         xl: "21px",
@@ -57,25 +65,6 @@ export const styles = {
       },
       objectFit: "cover",
       objectPosition: "50% 30%",
-    },
-  },
-  heroLandingSectionButton: {
-    fontSize: "14px",
-    fontWeight: "bold",
-    color: "#d9d9d9",
-    backgroundColor: "#111",
-    borderRadius: "10000px",
-    padding: "12px 20px 12px 24px",
-    margin: "12px 0px",
-    textTransform: "capitalize",
-    "& > svg": {
-      transition: "550ms all ease",
-      marginLeft: "12px",
-    },
-    "&:hover": {
-      "& > svg": {
-        transform: "translateX(12px)",
-      },
     },
   },
 }

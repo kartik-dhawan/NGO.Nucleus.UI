@@ -24,20 +24,6 @@ exports[`Navbar component -- should render correctly 1`] = `
     <div
       className="MuiBox-root css-q2mcz2"
     >
-      <img
-        data-nimg="1"
-        decoding="async"
-        height={32}
-        onError={[Function]}
-        onLoad={[Function]}
-        src=""
-        style={
-          {
-            "color": "transparent",
-          }
-        }
-        width={32}
-      />
       <style
         dangerouslySetInnerHTML={
           {
