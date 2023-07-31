@@ -1,27 +1,14 @@
-import { Box, Button, FormControl, TextField, Typography } from "@mui/material"
+import { Box, Button, Grid, TextField, Typography } from "@mui/material"
 import Image from "next/image"
 import { useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
+import { styles } from "./styles"
 
 const Footer = () => {
   const { content } = useSelector((state: RootType) => state.contentSlice)
 
   return (
-    <Box
-      component="footer"
-      sx={{
-        position: "relative",
-        minHeight: "720px",
-        marginTop: "6rem",
-        "& > img": {
-          position: "absolute",
-          top: 0,
-          objectFit: "cover",
-          height: "100%",
-          width: "100vw",
-        },
-      }}
-    >
+    <Box component="footer" sx={styles.footerWrapper}>
       {content.footerBackgroundImage && (
         <Image
           src={"https:" + content?.footerBackgroundImage?.fields.file.url}
@@ -30,157 +17,63 @@ const Footer = () => {
           height={3840}
         />
       )}
-      <Box
-        sx={{
-          position: "relative",
-          zIndex: 10,
-          background:
-            "linear-gradient(90deg, rgba( 0, 0, 0, 0.25 ), rgba( 0, 0, 0, 0 ))",
-          boxShadow: " 0 8px 8px 0 rgba( 31, 38, 135, 0.37 )",
-          backdropFilter: "blur( 7px )",
-          WebkitBackdropFilter: "blur( 7px )",
-          minHeight: "720px",
-          padding: "2rem",
-        }}
-      >
-        <Box
-          sx={{
-            "& > img": {
-              flex: 1,
-              display: {
-                xs: "none",
-                md: "inherit",
-              },
-            },
-            backgroundColor: "#F1EFE9",
-            display: "flex",
-            borderRadius: "1rem",
-            alignItems: "center",
-          }}
-        >
+      <Box sx={styles.footerDataWrapper}>
+        <Box sx={styles.footerContactCardWrapper}>
           {content?.contactUsIllustration && (
             <Image
               src={"https:" + content?.contactUsIllustration?.fields.file.url}
               alt={content?.contactUsIllustration?.fields.description}
-              height={500}
-              width={500}
+              height={400}
+              width={400}
             />
           )}
-          <Box
-            className="poppins"
-            sx={{
-              color: "#111",
-              flex: 1,
-              display: "flex",
-              gap: "2rem",
-              flexDirection: "column",
-            }}
-          >
+          <Box className="poppins" sx={styles.footerContactBodyWrapper}>
+            <Typography sx={styles.footerContactUsTitle}>Contact us</Typography>
             <Typography
-              sx={{
-                fontSize: "14px",
-                textTransform: "uppercase",
-                letterSpacing: "1.5px",
-                color: "#656565",
-              }}
+              className="cormorant"
+              sx={styles.footerContactUsSubheading}
             >
-              Contact us
+              Swiftly get a call & talk with the right people in our team to
+              help.
             </Typography>
-            <Typography className="cormorant" sx={{ fontSize: "32px" }}>
-              Swiftly get a call and communicate with the right people in our
-              team to help make a difference.
-            </Typography>
-            <FormControl
-              fullWidth
-              size="small"
+            <Grid
+              container
               className="poppins"
               sx={{
-                display: "flex",
-                flexDirection: "column",
-                flexWrap: "wrap",
-                width: "100%",
-                paddingRight: "3rem",
                 boxSizing: "border-box",
-                gap: "8px",
               }}
             >
-              <TextField
-                sx={{
-                  "& > div::before": {
-                    borderBottom: "1px solid #ccc",
-                  },
-                  "& > div::after": {
-                    borderBottom: "1px solid #8b8b8b",
-                  },
-                  "& > div:hover:not(.Mui-disabled, .Mui-error):before": {
-                    borderBottom: "1px solid #8b8b8b",
-                  },
-                  "& > div input": {
-                    fontSize: "14px",
-                    padding: "8px 0px",
-                  },
-                  "& > label": {
-                    fontSize: "14px",
-                  },
-                  "& > label.Mui-focused": {
-                    color: "#751d1d",
-                  },
-                }}
-                variant="standard"
-                label="Name"
-              />
-              <TextField
-                sx={{
-                  "& > div::after": {
-                    borderBottom: "1px solid #8b8b8b",
-                  },
-                  "& > div::before": {
-                    borderBottom: "1px solid #ccc",
-                  },
-                  "& > div:hover:not(.Mui-disabled, .Mui-error):before": {
-                    borderBottom: "1px solid #8b8b8b",
-                  },
-                  "& > div input": {
-                    fontSize: "14px",
-                    padding: "8px 0px",
-                  },
-                  "& > label": {
-                    fontSize: "14px",
-                  },
-                  "& > label.Mui-focused": {
-                    color: "#751d1d",
-                  },
-                }}
-                variant="standard"
-                label="Email"
-              />
-              <TextField
-                sx={{
-                  "& > div::after": {
-                    borderBottom: "1px solid #8b8b8b",
-                  },
-                  "& > div::before": {
-                    borderBottom: "1px solid #ccc",
-                  },
-                  "& > div:hover:not(.Mui-disabled, .Mui-error):before": {
-                    borderBottom: "1px solid #8b8b8b",
-                  },
-                  "& > div input": {
-                    fontSize: "14px",
-                    padding: "8px 0px",
-                  },
-                  "& > label": {
-                    fontSize: "14px",
-                  },
-                  "& > label.Mui-focused": {
-                    color: "#751d1d",
-                  },
-                }}
-                variant="standard"
-                label="Phone Number"
-              />
-              <Button>Get a call</Button>
-            </FormControl>
+              <Grid
+                item
+                md={5}
+                sm={5}
+                xs={12}
+                sx={styles.contactUsFormNameField}
+              >
+                <TextField
+                  sx={styles.formTextField}
+                  variant="standard"
+                  label="Name"
+                />
+              </Grid>
+              <Grid item md={5} sm={5} xs={12}>
+                <TextField
+                  sx={styles.formTextField}
+                  variant="standard"
+                  label="Phone Number"
+                />
+              </Grid>
+              <Grid item md={12} sm={12} xs={12}>
+                <TextField
+                  sx={styles.formTextField}
+                  variant="standard"
+                  label="Email"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <Button>Get a call</Button>
+              </Grid>
+            </Grid>
             {/* <FormHelperText id="my-helper-text">
               We'll never share your email.
             </FormHelperText> */}
