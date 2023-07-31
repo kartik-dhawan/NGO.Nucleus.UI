@@ -74,8 +74,13 @@ export const styles = {
       xs: "28px",
       lg: "32px",
     },
+    lineHeight: {
+      xs: "44px",
+      lg: "48px",
+    },
     fontWeight: 500,
     paddingRight: "3rem",
+    margin: 0,
   },
   contactUsFormNameField: {
     marginRight: {

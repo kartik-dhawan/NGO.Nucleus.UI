@@ -44,13 +44,14 @@ const Footer = () => {
           )}
           <Box className="poppins" sx={styles.footerContactBodyWrapper}>
             <Typography sx={styles.footerContactUsTitle}>Contact us</Typography>
-            <Typography
+            <Box
+              component="p"
               className="cormorant"
               sx={styles.footerContactUsSubheading}
             >
               Swiftly get a call & talk with the right people in our team to
               help.
-            </Typography>
+            </Box>
             <Grid
               container
               className="poppins"
