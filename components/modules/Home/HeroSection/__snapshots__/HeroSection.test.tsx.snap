@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hero section -- should render correctly 1`] = `
+[
+  <style
+    dangerouslySetInnerHTML={
+      {
+        "__html": ".css-iat75x{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}@media (min-width:0px){.css-iat75x{gap:2rem;}}@media (min-width:900px){.css-iat75x{gap:12rem;}}",
+      }
+    }
+    data-emotion="css iat75x"
+  />,
+  <section
+    className="MuiBox-root css-iat75x"
+  />,
+]
+`;
