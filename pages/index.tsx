@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setContent, setEnv } from "../redux/slices/contentSlice"
 import { HomePageProps } from "../utils/interfaces"
+import HeroSection from "../components/modules/Home/HeroSection"
 
 export const getStaticProps: GetStaticProps = async () => {
   const response: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -37,7 +38,7 @@ export default function Home({ content, environment }: HomePageProps) {
       </Head>
 
       <main>
-        <pre>home</pre>
+        <HeroSection />
       </main>
     </div>
   )

@@ -35,8 +35,8 @@ const NavList = ({ orientation }: NavListProps) => {
       {content?.navbarItems?.map((item: NavbarItem) => {
         const desktopStyles = {
           ...styles.navbarItem,
-          borderLeft: item.id < 4 ? "0.5px solid #222" : "none",
-          borderRight: item.id > 4 ? "0.5px solid #222" : "none",
+          borderLeft: item.id < 4 ? "0.5px solid #c9c9c9" : "none",
+          borderRight: item.id > 4 ? "0.5px solid #c9c9c9" : "none",
         }
         const mobileNavItemStyles = {
           ...styles.navbarItem,
