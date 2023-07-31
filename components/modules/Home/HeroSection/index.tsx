@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { RootType } from "../../../../redux/store"
-import { Box, Button, Typography } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image"
 import { styles } from "./styles"
@@ -30,7 +30,7 @@ const HeroSection = () => {
             }}
           >
             <Box sx={styles.heroSectionTypographyWrapper}>
-              <Typography
+              <Box
                 className="barlowCondensed"
                 sx={styles.heroSectionTypography}
               >
@@ -42,7 +42,7 @@ const HeroSection = () => {
                   {content.heroLandingSectionButtonText[index]}{" "}
                   <ArrowRightAltIcon />
                 </Button>
-              </Typography>
+              </Box>
               <Box></Box>
             </Box>
             <Box sx={styles.heroSectionImages}>

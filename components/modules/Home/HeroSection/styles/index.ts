@@ -31,8 +31,16 @@ export const styles = {
         xs: "32px",
         xl: "38px",
       },
+      lineHeight: {
+        xs: "42px",
+        xl: "46px",
+      },
     },
     "& p": {
+      lineHeight: {
+        xs: "27px",
+        xl: "30px",
+      },
       fontSize: {
         xs: "18px",
         xl: "21px",
