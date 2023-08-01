@@ -20,7 +20,7 @@ export const styles = {
     backdropFilter: "blur( 7px )",
     WebkitBackdropFilter: "blur( 7px )",
     minHeight: "720px",
-    padding: "2rem",
+    padding: "0rem 2rem 2rem",
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
@@ -49,7 +49,6 @@ export const styles = {
     },
     backgroundColor: "#F1EFE9",
     display: "flex",
-    borderRadius: "1rem",
     alignItems: "center",
     padding: {
       xs: "1rem 0rem",
