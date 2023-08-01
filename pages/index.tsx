@@ -17,7 +17,9 @@ export const getStaticProps: GetStaticProps = async () => {
       content: response.items[0].fields,
       environment: response.items[0].sys.environment.sys.id,
     },
-    revalidate: parseInt(process.env.NEXT_REVALIDATION_TIME ?? "3600"),
+    revalidate: parseInt(
+      process.env.NEXT_PUBLIC_NEXT_REVALIDATION_TIME ?? "3600",
+    ),
   }
 }
 
