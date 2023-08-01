@@ -30,3 +30,14 @@ export interface ContactFormData {
   email: string
   contactNumber: string
 }
+
+export interface DeveloperOrRefDetails {
+  name: string
+  link: string
+}
+
+export interface DevelopedByRole {
+  id: number
+  role: string
+  dev: DeveloperOrRefDetails[]
+}

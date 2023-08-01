@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
 import { styles } from "./styles"
 import ContactCard from "./ContactCard"
+import References from "./References"
 
 const Footer = () => {
   const { content } = useSelector((state: RootType) => state.contentSlice)
@@ -22,10 +23,7 @@ const Footer = () => {
         {/* Contact us form */}
         <ContactCard content={content} />
         {/* footer data */}
-        <Box sx={{ color: "#d9d9d9" }}>
-          <Box sx={{ color: "#d9d9d9" }}>Hello</Box>
-          <Box sx={{ color: "#d9d9d9" }}>Hello</Box>
-        </Box>
+        <References content={content} />
       </Box>
     </Box>
   )

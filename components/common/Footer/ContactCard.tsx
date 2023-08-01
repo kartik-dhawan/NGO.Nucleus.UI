@@ -22,13 +22,14 @@ const ContactCard = ({ content }: ContactCardProps) => {
     useState<ContactFormData>(initialState)
 
   return (
-    <Box sx={styles.footerContactCardWrapper}>
+    <Box component="section" sx={styles.footerContactCardWrapper}>
       {content?.contactUsIllustration && (
         <Image
           src={"https:" + content?.contactUsIllustration?.fields.file.url}
           alt={content?.contactUsIllustration?.fields.description}
           height={400}
           width={400}
+          priority
         />
       )}
       <Box className="poppins" sx={styles.footerContactBodyWrapper}>
