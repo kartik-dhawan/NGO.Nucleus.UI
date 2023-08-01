@@ -55,6 +55,7 @@ const HeroSection = () => {
                   alt={content?.heroSectionImages[index].fields.description}
                   width={2787}
                   height={4180}
+                  priority
                 />
               )}
             </Box>

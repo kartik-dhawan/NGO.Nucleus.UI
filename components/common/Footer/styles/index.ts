@@ -20,7 +20,10 @@ export const styles = {
     backdropFilter: "blur( 7px )",
     WebkitBackdropFilter: "blur( 7px )",
     minHeight: "720px",
-    padding: "2rem",
+    padding: "0rem 2rem 2rem",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
   },
   footerContactCardWrapper: {
     position: "relative",
@@ -29,30 +32,31 @@ export const styles = {
       display: {
         xs: "none",
         md: "inherit",
-        height: {
-          xs: "300px",
-          lg: "450px",
-        },
-        width: {
-          xs: "300px",
-          lg: "450px",
-        },
-        objectFit: {
-          xs: "cover",
-          xl: "contain",
-        },
-        objectPosition: "0% 80%",
       },
+      height: {
+        xs: "300px",
+        lg: "450px",
+      },
+      width: {
+        xs: "300px",
+        lg: "450px",
+      },
+      objectFit: {
+        xs: "cover",
+        xl: "contain",
+      },
+      objectPosition: "0% 80%",
     },
     backgroundColor: "#F1EFE9",
     display: "flex",
-    borderRadius: "1rem",
     alignItems: "center",
     padding: {
       xs: "1rem 0rem",
-      md: "1rem 0rem",
+      md: "2rem 0rem",
       lg: "2.5rem 0rem",
+      xl: "0rem",
     },
+    maxWidth: "1280px",
   },
   footerContactBodyWrapper: {
     color: "#111",
