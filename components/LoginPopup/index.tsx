@@ -123,11 +123,7 @@ const LoginPopup = () => {
               textAlign: "center",
             }}
           >
-            <Button
-              className="cormorant"
-              sx={styles.loginButton}
-              onClick={loginHandler}
-            >
+            <Button sx={styles.loginButton} onClick={loginHandler}>
               Login
             </Button>
           </Grid>

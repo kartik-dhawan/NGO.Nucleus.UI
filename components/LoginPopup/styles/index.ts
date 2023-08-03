@@ -64,6 +64,7 @@ export const styles = {
     fontSize: "24px",
     textTransform: "capitalize",
     borderRadius: 0,
+    fontFamily: "Cormorant Garamond !important",
     "&:hover": {
       backgroundColor: "#111",
       color: "#f2f2f2",
