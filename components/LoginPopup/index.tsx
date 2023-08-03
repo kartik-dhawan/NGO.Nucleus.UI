@@ -12,11 +12,13 @@ import {
 import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../redux/store"
 import { toggleLoginDialog } from "../../redux/slices/authSlice"
-import React, { useCallback } from "react"
+import React, { useCallback, useState } from "react"
 import Link from "next/link"
 import { styles } from "./styles"
 import Slide from "@mui/material/Slide"
 import { TransitionProps } from "@mui/material/transitions"
+import { LoginFormData } from "../../utils/interfaces"
+import { isEmailInValidFormat } from "../../utils/methods"
 
 const SlideTransition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -29,9 +31,29 @@ const SlideTransition = React.forwardRef(function Transition(
   )
 })
 
+const initialState: LoginFormData = {
+  email: "",
+  password: "",
+}
+
+interface LoginFormInputErrorState {
+  email: boolean
+  password: boolean
+}
+
 const LoginPopup = () => {
   const dispatch = useDispatch()
   const theme = useTheme()
+
+  const [loginFormData, setLoginFormData] =
+    useState<LoginFormData>(initialState)
+  const [loginFormInputError, setLoginFormInputError] =
+    useState<LoginFormInputErrorState>({
+      email: false,
+      password: false,
+    })
+
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"))
 
   const { loginDialog } = useSelector((state: RootType) => state.authSlice)
 
@@ -39,7 +61,12 @@ const LoginPopup = () => {
     dispatch(toggleLoginDialog())
   }, [])
 
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"))
+  const loginHandler = useCallback(() => {
+    setLoginFormInputError({
+      email: !isEmailInValidFormat(loginFormData.email),
+      password: loginFormData.password.length <= 6,
+    })
+  }, [loginFormData])
 
   return (
     <Dialog
@@ -57,12 +84,26 @@ const LoginPopup = () => {
           sx={styles.loginPopupTextField}
           label="Email"
           variant="outlined"
+          value={loginFormData.email}
+          onChange={(e) => {
+            setLoginFormData({ ...loginFormData, email: e.target.value })
+          }}
+          error={loginFormInputError.email}
+          helperText={loginFormInputError.email && "Please recheck your email."}
         />
         <TextField
           sx={styles.loginPopupTextField}
           label="Password"
           type="password"
           variant="outlined"
+          value={loginFormData.password}
+          onChange={(e) => {
+            setLoginFormData({ ...loginFormData, password: e.target.value })
+          }}
+          error={loginFormInputError.password}
+          helperText={
+            loginFormInputError.password && "Please recheck your password."
+          }
         />
       </DialogContent>
       <DialogActions>
@@ -82,7 +123,11 @@ const LoginPopup = () => {
               textAlign: "center",
             }}
           >
-            <Button className="cormorant" sx={styles.loginButton}>
+            <Button
+              className="cormorant"
+              sx={styles.loginButton}
+              onClick={loginHandler}
+            >
               Login
             </Button>
           </Grid>

@@ -52,7 +52,7 @@ const NavList = ({ orientation }: NavListProps) => {
         }
         return (
           <Link
-            href={item.label === "Admin" ? "javascript:void(0)" : item.url}
+            href={item.label === "Admin" ? "#!" : item.url}
             key={item.id}
             style={{
               textDecoration: "none",
