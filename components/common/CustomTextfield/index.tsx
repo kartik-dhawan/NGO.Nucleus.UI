@@ -8,11 +8,18 @@ interface CustomTextFieldProps {
     | ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
     | undefined
   value?: string
+  type?: string
 }
 
-const CustomTextField = ({ label, onChange, value }: CustomTextFieldProps) => {
+const CustomTextField = ({
+  label,
+  onChange,
+  value,
+  type,
+}: CustomTextFieldProps) => {
   return (
     <TextField
+      type={type}
       sx={styles.formTextField}
       variant="standard"
       label={label}
