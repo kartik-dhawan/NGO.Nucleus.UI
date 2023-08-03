@@ -69,7 +69,8 @@ export const styles = {
     },
     flexDirection: "column",
     padding: {
-      xs: "2rem 3rem",
+      xs: "1rem 2rem",
+      sm: "2rem 3rem",
       md: "0 3rem",
     },
   },
@@ -81,7 +82,8 @@ export const styles = {
   },
   footerContactUsSubheading: {
     fontSize: {
-      xs: "28px",
+      xs: "24px",
+      sm: "28px",
       lg: "32px",
     },
     lineHeight: {
@@ -90,7 +92,10 @@ export const styles = {
     },
     fontWeight: 500,
     paddingRight: "3rem",
-    margin: 0,
+    margin: {
+      xs: "0rem -2rem 0rem 0rem",
+      sm: 0,
+    },
   },
   contactUsFormNameField: {
     marginRight: {

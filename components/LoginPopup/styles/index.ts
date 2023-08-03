@@ -2,7 +2,10 @@ export const styles = {
   loginDialog: {
     "& .MuiDialog-container": {
       "& .MuiPaper-root": {
-        backgroundColor: "#f5fcfde8",
+        backgroundColor: {
+          xs: "#fff",
+          sm: "#f5fcfde8",
+        },
         maxWidth: {
           xs: "100%",
           sm: "60%",

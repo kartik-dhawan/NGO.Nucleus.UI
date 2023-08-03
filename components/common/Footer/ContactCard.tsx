@@ -85,7 +85,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
               }}
             />
           </Grid>
-          <Grid item xs={6} marginTop={2}>
+          <Grid item xs={6} marginY={2}>
             <PrimaryButton>Get a call!!</PrimaryButton>
           </Grid>
         </Grid>
