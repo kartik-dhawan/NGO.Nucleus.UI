@@ -77,7 +77,7 @@ const LoginPopup = () => {
       TransitionComponent={SlideTransition}
     >
       <DialogTitle className="poppins" sx={styles.loginDialogTitle}>
-        Login
+        Admin Login
       </DialogTitle>
       <DialogContent sx={styles.loginDialogContentWrapper}>
         <TextField
