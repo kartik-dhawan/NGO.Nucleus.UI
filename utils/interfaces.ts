@@ -41,3 +41,7 @@ export interface DevelopedByRole {
   role: string
   dev: DeveloperOrRefDetails[]
 }
+export interface LoginFormData {
+  email: string
+  password: string
+}

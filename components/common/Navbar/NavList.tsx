@@ -3,14 +3,19 @@ import { NavbarItem } from "../../../utils/interfaces"
 import Link from "next/link"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import { styles } from "./styles"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
+import { toggleLoginDialog } from "../../../redux/slices/authSlice"
 
 interface NavListProps {
   orientation: "desktop" | "mobile"
 }
 
 const NavList = ({ orientation }: NavListProps) => {
+  const dispatch = useDispatch()
+
+  const { content } = useSelector((state: RootType) => state.contentSlice)
+
   const mobileListStyles = {
     ...styles.navbarItemsWrapper,
     display: {
@@ -23,8 +28,6 @@ const NavList = ({ orientation }: NavListProps) => {
       sm: "20rem",
     },
   }
-
-  const { content } = useSelector((state: RootType) => state.contentSlice)
 
   return (
     <List
@@ -49,11 +52,14 @@ const NavList = ({ orientation }: NavListProps) => {
         }
         return (
           <Link
-            href={item.url}
+            href={item.label === "Admin" ? "#!" : item.url}
             key={item.id}
             style={{
               textDecoration: "none",
               width: orientation === "mobile" ? "100%" : "max-content",
+            }}
+            onClick={() => {
+              item.label === "Admin" && dispatch(toggleLoginDialog()) // eslint-disable-line
             }}
           >
             <ListItem
