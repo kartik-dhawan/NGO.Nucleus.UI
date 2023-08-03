@@ -6,3 +6,7 @@ export interface ContentStateType {
   content: ContentfulVariable
   env: ContentFulENV
 }
+
+export interface AuthStateType {
+  loginDialog: boolean
+}

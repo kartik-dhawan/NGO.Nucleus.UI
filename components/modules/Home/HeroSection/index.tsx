@@ -6,12 +6,15 @@ import Image from "next/image"
 import { styles } from "./styles"
 import PrimaryButton from "../../../common/Buttons/PrimaryButton"
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt"
+import LoginPopup from "../../../LoginPopup"
 
 const HeroSection = () => {
   const { content } = useSelector((state: RootType) => state.contentSlice)
+  const { loginDialog } = useSelector((state: RootType) => state.authSlice)
 
   return (
     <Box component="section" sx={styles.heroSectionWrapper}>
+      {loginDialog && <LoginPopup />}
       {content.heroSectionImages?.map((item: any, index: number) => {
         return (
           <Box
