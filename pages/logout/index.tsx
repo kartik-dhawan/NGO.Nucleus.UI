@@ -19,7 +19,7 @@ const Logout = () => {
         localStorage.setItem("isAuthenticated", "false")
         document.cookie = "firebase-token-storage='';"
         router.push("/")
-        dispatch(toggleMenuList())
+        dispatch(toggleMenuList(false))
       })
       .catch(() => {
         setIsLogoutError(true)

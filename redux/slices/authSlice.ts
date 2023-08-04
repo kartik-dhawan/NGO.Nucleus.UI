@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { AuthStateType } from "../stateInterfaces"
 
 const initialState: AuthStateType = {
@@ -13,8 +13,8 @@ const authSlice = createSlice({
     toggleLoginDialog: (state: AuthStateType) => {
       state.loginDialog = !state.loginDialog
     },
-    toggleMenuList: (state: AuthStateType) => {
-      state.menuList = !state.menuList
+    toggleMenuList: (state: AuthStateType, action: PayloadAction<boolean>) => {
+      state.menuList = action.payload
     },
   },
 })

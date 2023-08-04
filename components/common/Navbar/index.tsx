@@ -19,9 +19,9 @@ const Navbar = () => {
   const navbarListLength = (content && content.navbarItems?.length) ?? 4
 
   const toggleMenu = useCallback(() => {
-    dispatch(toggleMenuList())
+    dispatch(toggleMenuList(!menuList))
     setOpenMenu((state) => !state)
-  }, [dispatch])
+  }, [dispatch, menuList])
 
   useEffect(() => {
     setOpenMenu(menuList)
