@@ -5,13 +5,13 @@ exports[`Navbar component -- should render correctly 1`] = `
   <style
     dangerouslySetInnerHTML={
       {
-        "__html": ".css-fa8ti4{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin:0px;padding:0px;border-bottom:0.5px solid #999;position:fixed;top:0;left:0;right:0;z-index:100;background-color:#fff;}",
+        "__html": ".css-1sajmd3{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin:0px;padding:0px;border-bottom:0.5px solid #999;position:-webkit-sticky;position:sticky;top:0;left:0;right:0;z-index:100;background-color:#fff;}",
       }
     }
-    data-emotion="css fa8ti4"
+    data-emotion="css 1sajmd3"
   />,
   <nav
-    className="robotoCondensed MuiBox-root css-fa8ti4"
+    className="robotoCondensed MuiBox-root css-1sajmd3"
   >
     <style
       dangerouslySetInnerHTML={

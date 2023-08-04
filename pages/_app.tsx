@@ -10,7 +10,11 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   if (PAGES_WITH_NO_NAVBAR.includes(router.pathname)) {
-    return <Component {...pageProps} />
+    return (
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    )
   } else {
     return (
       <Provider store={store}>

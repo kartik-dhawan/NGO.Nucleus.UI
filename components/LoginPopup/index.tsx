@@ -19,6 +19,9 @@ import Slide from "@mui/material/Slide"
 import { TransitionProps } from "@mui/material/transitions"
 import { LoginFormData } from "../../utils/interfaces"
 import { isEmailInValidFormat } from "../../utils/methods"
+import { useRouter } from "next/router"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { app } from "../../firebase/config"
 
 const SlideTransition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -44,6 +47,8 @@ interface LoginFormInputErrorState {
 const LoginPopup = () => {
   const dispatch = useDispatch()
   const theme = useTheme()
+  const router = useRouter()
+  const auth = getAuth(app)
 
   const [loginFormData, setLoginFormData] =
     useState<LoginFormData>(initialState)
@@ -59,13 +64,41 @@ const LoginPopup = () => {
 
   const closePopupHandler = useCallback(() => {
     dispatch(toggleLoginDialog())
+    router.push("/")
   }, [])
 
   const loginHandler = useCallback(() => {
+    const emailValidity = isEmailInValidFormat(loginFormData.email)
+    const passwordValidity = loginFormData.password.length >= 6
+
     setLoginFormInputError({
-      email: !isEmailInValidFormat(loginFormData.email),
-      password: loginFormData.password.length <= 6,
+      email: !emailValidity,
+      password: !passwordValidity,
     })
+
+    console.log(emailValidity, passwordValidity)
+
+    passwordValidity && // eslint-disable-line
+      passwordValidity &&
+      signInWithEmailAndPassword(
+        auth,
+        loginFormData.email,
+        loginFormData.password,
+      )
+        .then((res) => {
+          console.log(res)
+          const user: any = res.user.toJSON()
+          const tokens = user?.stsTokenManager
+
+          localStorage.setItem("firebase-token-storage", JSON.stringify(tokens))
+          document.cookie = `firebase-token-storage=${JSON.stringify(tokens)};`
+
+          localStorage.setItem("isAuthenticated", "true")
+          router.push("/admin")
+        })
+        .catch((err) => {
+          console.log(err)
+        })
   }, [loginFormData])
 
   return (
