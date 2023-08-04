@@ -53,7 +53,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
             <CustomTextField
               label="Name"
               value={contactFormData.name}
-              onChange={(e: any) => {
+              onChange={(e) => {
                 setContactFormData({
                   ...contactFormData,
                   name: e.target.value,
@@ -65,7 +65,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
             <CustomTextField
               label="Contact Number"
               value={contactFormData.contactNumber}
-              onChange={(e: any) => {
+              onChange={(e) => {
                 setContactFormData({
                   ...contactFormData,
                   contactNumber: e.target.value,
@@ -77,7 +77,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
             <CustomTextField
               label="Email"
               value={contactFormData.email}
-              onChange={(e: any) => {
+              onChange={(e) => {
                 setContactFormData({
                   ...contactFormData,
                   email: e.target.value,

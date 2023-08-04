@@ -25,7 +25,7 @@ import { app } from "../../firebase/config"
 
 const SlideTransition = React.forwardRef(function Transition(
   props: TransitionProps & {
-    children: React.ReactElement<any, any>
+    children: React.ReactElement<any, any> // eslint-disable-line
   },
   ref: React.Ref<unknown>,
 ) {
@@ -65,7 +65,7 @@ const LoginPopup = () => {
   const closePopupHandler = useCallback(() => {
     dispatch(toggleLoginDialog())
     router.push("/")
-  }, [])
+  }, [dispatch, router])
 
   const loginHandler = useCallback(() => {
     const emailValidity = isEmailInValidFormat(loginFormData.email)
@@ -76,8 +76,6 @@ const LoginPopup = () => {
       password: !passwordValidity,
     })
 
-    console.log(emailValidity, passwordValidity)
-
     passwordValidity && // eslint-disable-line
       passwordValidity &&
       signInWithEmailAndPassword(
@@ -86,8 +84,7 @@ const LoginPopup = () => {
         loginFormData.password,
       )
         .then((res) => {
-          console.log(res)
-          const user: any = res.user.toJSON()
+          const user: any = res.user.toJSON() // eslint-disable-line
           const tokens = user?.stsTokenManager
 
           localStorage.setItem("firebase-token-storage", JSON.stringify(tokens))
@@ -99,7 +96,7 @@ const LoginPopup = () => {
         .catch((err) => {
           console.log(err)
         })
-  }, [loginFormData])
+  }, [loginFormData, auth, router])
 
   return (
     <Dialog

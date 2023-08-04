@@ -6,6 +6,8 @@ import { styles } from "./styles"
 import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
 import { toggleLoginDialog } from "../../../redux/slices/authSlice"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 
 interface NavListProps {
   orientation: "desktop" | "mobile"
@@ -13,8 +15,15 @@ interface NavListProps {
 
 const NavList = ({ orientation }: NavListProps) => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const { content } = useSelector((state: RootType) => state.contentSlice)
+
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+
+  useEffect(() => {
+    setIsAuthenticated(localStorage.getItem("isAuthenticated") === "true")
+  }, [router])
 
   const mobileListStyles = {
     ...styles.navbarItemsWrapper,
@@ -52,14 +61,24 @@ const NavList = ({ orientation }: NavListProps) => {
         }
         return (
           <Link
-            href={item.label === "Admin" ? "#!" : item.url}
+            href={
+              item.label === "Admin"
+                ? router.asPath === "/admin"
+                  ? "/logout"
+                  : isAuthenticated
+                  ? "/admin"
+                  : "#!"
+                : item.url
+            }
             key={item.id}
             style={{
               textDecoration: "none",
               width: orientation === "mobile" ? "100%" : "max-content",
             }}
             onClick={() => {
-              item.label === "Admin" && dispatch(toggleLoginDialog()) // eslint-disable-line
+              item.label === "Admin" && // eslint-disable-line
+                !isAuthenticated &&
+                dispatch(toggleLoginDialog())
             }}
           >
             <ListItem
@@ -67,8 +86,10 @@ const NavList = ({ orientation }: NavListProps) => {
                 orientation === "desktop" ? desktopStyles : mobileNavItemStyles
               }
             >
-              {item.id === 4 && <LockOutlinedIcon />}
-              {item.label}
+              {item.id === 4 && !isAuthenticated && <LockOutlinedIcon />}
+              {item.label === "Admin" && router.asPath === "/admin"
+                ? "Logout"
+                : item.label}
             </ListItem>
           </Link>
         )
