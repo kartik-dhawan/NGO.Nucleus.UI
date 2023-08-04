@@ -1,21 +1,31 @@
 import { Box, Button, Drawer, Typography } from "@mui/material"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../../redux/store"
 import Image from "next/image"
 import Link from "next/link"
 import { styles } from "./styles"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import NavList from "./NavList"
+import { toggleMenuList } from "../../../redux/slices/authSlice"
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+
   const [openMenu, setOpenMenu] = useState<boolean>(false)
 
   const { content } = useSelector((state: RootType) => state.contentSlice)
+  const { menuList } = useSelector((state: RootType) => state.authSlice)
+
   const navbarListLength = (content && content.navbarItems?.length) ?? 4
 
   const toggleMenu = useCallback(() => {
+    dispatch(toggleMenuList())
     setOpenMenu((state) => !state)
-  }, [])
+  }, [dispatch])
+
+  useEffect(() => {
+    setOpenMenu(menuList)
+  }, [menuList])
 
   return (
     <Box className="robotoCondensed" component="nav" sx={styles.navbarWrapper}>

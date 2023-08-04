@@ -4,7 +4,7 @@ export const styles = {
     margin: 0,
     padding: 0,
     borderBottom: "0.5px solid #999",
-    position: "fixed",
+    position: "sticky",
     top: 0,
     left: 0,
     right: 0,

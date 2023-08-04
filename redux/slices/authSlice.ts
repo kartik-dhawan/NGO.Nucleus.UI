@@ -3,6 +3,7 @@ import { AuthStateType } from "../stateInterfaces"
 
 const initialState: AuthStateType = {
   loginDialog: false,
+  menuList: false,
 }
 
 const authSlice = createSlice({
@@ -12,8 +13,11 @@ const authSlice = createSlice({
     toggleLoginDialog: (state: AuthStateType) => {
       state.loginDialog = !state.loginDialog
     },
+    toggleMenuList: (state: AuthStateType) => {
+      state.menuList = !state.menuList
+    },
   },
 })
 
-export const { toggleLoginDialog } = authSlice.actions
+export const { toggleLoginDialog, toggleMenuList } = authSlice.actions
 export default authSlice.reducer

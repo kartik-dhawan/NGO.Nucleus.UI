@@ -8,3 +8,12 @@ export const isEmailInValidFormat = (email: string) => {
 
   return emailFilter.test(email)
 }
+
+/**
+ *
+ * @param {number} expTime
+ * @returns {boolean}
+ */
+export const hasTokenExpired = (expTime: number) => {
+  return Math.floor((Date.now() - expTime) / 1000) > 0
+}

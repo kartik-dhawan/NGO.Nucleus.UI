@@ -15,56 +15,58 @@ const HeroSection = () => {
   return (
     <Box component="section" sx={styles.heroSectionWrapper}>
       {loginDialog && <LoginPopup />}
-      {content.heroSectionImages?.map((item: any, index: number) => {
-        return (
-          <Box
-            key={item.sys.id}
-            sx={{
-              ...styles.heroSectionItemWrapper,
-              flexDirection:
-                index === 0
-                  ? {
-                      xs: "column-reverse",
-                      md: "row",
-                    }
-                  : {
-                      xs: "column-reverse",
-                      md: "row-reverse",
-                    },
-            }}
-          >
-            <Box sx={styles.heroSectionTypographyWrapper}>
-              <Box
-                className="barlowCondensed"
-                sx={styles.heroSectionTypography}
-              >
-                {index === 0 &&
-                  documentToReactComponents(content?.heroLandingSectionBody)}
-                {index === 1 &&
-                  documentToReactComponents(content?.heroQuoteSectionBody)}
-                <PrimaryButton icon={<ArrowRightAltIcon />}>
-                  {content.heroLandingSectionButtonText[index]}
-                </PrimaryButton>
+      {content.heroSectionImages?.map(
+        (item: any, index: number) /*eslint-disable-line */ => {
+          return (
+            <Box
+              key={item.sys.id}
+              sx={{
+                ...styles.heroSectionItemWrapper,
+                flexDirection:
+                  index === 0
+                    ? {
+                        xs: "column-reverse",
+                        md: "row",
+                      }
+                    : {
+                        xs: "column-reverse",
+                        md: "row-reverse",
+                      },
+              }}
+            >
+              <Box sx={styles.heroSectionTypographyWrapper}>
+                <Box
+                  className="barlowCondensed"
+                  sx={styles.heroSectionTypography}
+                >
+                  {index === 0 &&
+                    documentToReactComponents(content?.heroLandingSectionBody)}
+                  {index === 1 &&
+                    documentToReactComponents(content?.heroQuoteSectionBody)}
+                  <PrimaryButton icon={<ArrowRightAltIcon />}>
+                    {content.heroLandingSectionButtonText[index]}
+                  </PrimaryButton>
+                </Box>
+                <Box></Box>
               </Box>
-              <Box></Box>
+              <Box sx={styles.heroSectionImages}>
+                {content?.heroSectionImages && (
+                  <Image
+                    src={
+                      "https:" +
+                      content?.heroSectionImages[index].fields?.file.url
+                    }
+                    alt={content?.heroSectionImages[index].fields.description}
+                    width={2787}
+                    height={4180}
+                    priority
+                  />
+                )}
+              </Box>
             </Box>
-            <Box sx={styles.heroSectionImages}>
-              {content?.heroSectionImages && (
-                <Image
-                  src={
-                    "https:" +
-                    content?.heroSectionImages[index].fields?.file.url
-                  }
-                  alt={content?.heroSectionImages[index].fields.description}
-                  width={2787}
-                  height={4180}
-                  priority
-                />
-              )}
-            </Box>
-          </Box>
-        )
-      })}
+          )
+        },
+      )}
     </Box>
   )
 }
