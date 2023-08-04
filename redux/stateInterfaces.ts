@@ -9,4 +9,5 @@ export interface ContentStateType {
 
 export interface AuthStateType {
   loginDialog: boolean
+  menuList: boolean
 }

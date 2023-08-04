@@ -1,5 +1,6 @@
 import {
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -11,8 +12,8 @@ import {
 } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../redux/store"
-import { toggleLoginDialog } from "../../redux/slices/authSlice"
-import React, { useCallback, useState } from "react"
+import { toggleLoginDialog, toggleMenuList } from "../../redux/slices/authSlice"
+import React, { useCallback, useEffect, useState } from "react"
 import Link from "next/link"
 import { styles } from "./styles"
 import Slide from "@mui/material/Slide"
@@ -57,6 +58,7 @@ const LoginPopup = () => {
       email: false,
       password: false,
     })
+  const [loginLoader, setLoginLoader] = useState<boolean>(false)
 
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"))
 
@@ -64,39 +66,66 @@ const LoginPopup = () => {
 
   const closePopupHandler = useCallback(() => {
     dispatch(toggleLoginDialog())
+    dispatch(toggleMenuList())
     router.push("/")
   }, [dispatch, router])
 
   const loginHandler = useCallback(() => {
+    setLoginLoader(true)
+
     const emailValidity = isEmailInValidFormat(loginFormData.email)
     const passwordValidity = loginFormData.password.length >= 6
+
+    const isFormValid = emailValidity && passwordValidity
 
     setLoginFormInputError({
       email: !emailValidity,
       password: !passwordValidity,
     })
 
-    passwordValidity && // eslint-disable-line
-      passwordValidity &&
-      signInWithEmailAndPassword(
-        auth,
-        loginFormData.email,
-        loginFormData.password,
-      )
-        .then((res) => {
-          const user: any = res.user.toJSON() // eslint-disable-line
-          const tokens = user?.stsTokenManager
+    !isFormValid // eslint-disable-line
+      ? setLoginLoader(false)
+      : signInWithEmailAndPassword(
+          auth,
+          loginFormData.email,
+          loginFormData.password,
+        )
+          .then((res) => {
+            const user: any = res.user.toJSON() // eslint-disable-line
+            const tokens = user?.stsTokenManager
 
-          localStorage.setItem("firebase-token-storage", JSON.stringify(tokens))
-          document.cookie = `firebase-token-storage=${JSON.stringify(tokens)};`
+            localStorage.setItem(
+              "firebase-token-storage",
+              JSON.stringify(tokens),
+            )
+            document.cookie = `firebase-token-storage=${JSON.stringify(
+              tokens,
+            )};`
 
-          localStorage.setItem("isAuthenticated", "true")
-          router.push("/admin")
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-  }, [loginFormData, auth, router])
+            localStorage.setItem("isAuthenticated", "true")
+
+            dispatch(toggleMenuList())
+
+            router.push("/admin")
+          })
+          .catch((err) => {
+            setLoginLoader(false)
+            console.log(err)
+          })
+  }, [loginFormData, auth, router, dispatch])
+
+  useEffect(() => {
+    const keyDownHandler = (e: any /* eslint-disable-line */) => {
+      if (e.key === "Enter") {
+        return loginHandler()
+      }
+    }
+
+    window.addEventListener("keydown", keyDownHandler)
+    return () => {
+      window.removeEventListener("keydown", keyDownHandler)
+    }
+  }, [loginFormData, loginHandler])
 
   return (
     <Dialog
@@ -154,7 +183,11 @@ const LoginPopup = () => {
             }}
           >
             <Button sx={styles.loginButton} onClick={loginHandler}>
-              Login
+              {loginLoader ? (
+                <CircularProgress sx={{ color: "#d9d9d9" }} />
+              ) : (
+                "Login"
+              )}
             </Button>
           </Grid>
           <Grid
