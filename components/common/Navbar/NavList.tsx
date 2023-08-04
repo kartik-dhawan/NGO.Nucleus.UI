@@ -62,6 +62,11 @@ const NavList = ({ orientation }: NavListProps) => {
         return (
           <Link
             href={
+              /**
+               * on home page, if user is authenticated, the url will become '/admin'
+               * on home page, if user is unauthenticated, the url will become '/#!'
+               * on other pages, if user is authenticated, the url will become '/logout'
+               */
               item.label === "Admin"
                 ? router.asPath === "/admin"
                   ? "/logout"

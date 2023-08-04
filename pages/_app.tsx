@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
     localStorage.setItem("isAuthenticated", JSON.stringify(!isTokenExpired))
     isTokenExpired && // eslint-disable-line
       (localStorage.removeItem("firebase-token-storage"),
-      (document.cookie = `firebase-token-storage={}`)) // eslint-disable-line
+      (document.cookie = `firebase-token-storage={};`)) // eslint-disable-line
   }, [router])
 
   if (PAGES_WITH_NO_NAVBAR.includes(router.pathname)) {
