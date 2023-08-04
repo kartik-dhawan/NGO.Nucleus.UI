@@ -10,12 +10,13 @@ export const middleware = (req: NextRequest) => {
 
   const decodedToken = tokens.accessToken && jwt.decode(tokens?.accessToken)
 
-  if (
+  const isUnauthenticated =
     firebaseTokensCookie === "{}" ||
     decodedToken === null ||
     decodedToken === undefined ||
     hasTokenExpired(decodedToken.exp * 1000)
-  ) {
+
+  if (isUnauthenticated) {
     return NextResponse.redirect(new URL("/", req.url))
   } else {
     NextResponse.next()
@@ -23,5 +24,5 @@ export const middleware = (req: NextRequest) => {
 }
 
 export const config = {
-  matcher: ["/admin"],
+  matcher: ["/admin", "/logout"],
 }
