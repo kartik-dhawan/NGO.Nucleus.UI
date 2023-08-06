@@ -32,27 +32,26 @@ export const styles = {
         xs: "100vw",
         md: "max-content",
       },
+      justifyContent: {
+        xs: "center",
+        md: "flex-start",
+      },
       overflowX: "scroll",
     },
   },
   adminLayoutDrawerTitle: {
-    display: "flex",
+    display: {
+      xs: "none",
+      md: "flex",
+    },
     alignItems: "center",
-    gap: {
-      xs: "8px",
-      md: "16px",
-    },
+    gap: "16px",
     margin: "0px 24px",
-    fontSize: {
-      xs: "20px",
-      md: "24px",
-    },
+    fontSize: "28px",
     minWidth: "200px",
     width: "max-content",
-    textDecoration: {
-      xs: "underline",
-      md: "none",
-    },
+    justifyContent: "center",
+    fontWeight: 500,
   },
   adminLayoutDrawerSubhead: {
     textTransform: "uppercase",
@@ -81,9 +80,12 @@ export const styles = {
       textDecoration: "none",
       display: "flex",
       alignItems: "center",
-      gap: "8px",
+      gap: {
+        xs: "6px",
+        sm: "8px",
+      },
       padding: {
-        xs: "8px 14px",
+        xs: "8px 12px",
         md: "10px 16px",
       },
       "&:hover": {
@@ -91,6 +93,10 @@ export const styles = {
         borderRadius: "8px",
       },
       borderRadius: "8px",
+      fontSize: {
+        xs: "14px",
+        sm: "16px",
+      },
     },
   },
   adminLayoutChildrenWrapper: {

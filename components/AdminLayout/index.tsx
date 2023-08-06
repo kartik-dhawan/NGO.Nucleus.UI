@@ -38,8 +38,22 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   return (
     <Box component="main" sx={styles.adminLayoutWrapper}>
+      <Box
+        className="cormorant"
+        sx={{
+          ...styles.adminLayoutDrawerTitle,
+          display: {
+            xs: "flex",
+            md: "none",
+          },
+          fontSize: "44px",
+          margin: "0px 24px 24px",
+        }}
+      >
+        Admin Dashboard
+      </Box>
       <Drawer variant="permanent" sx={styles.adminLayoutDrawer}>
-        <Box className="poppins" sx={styles.adminLayoutDrawerTitle}>
+        <Box className="cormorant" sx={styles.adminLayoutDrawerTitle}>
           Admin Dashboard
         </Box>
         <Divider variant="middle" sx={styles.adminLayoutDivider} />
