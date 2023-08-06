@@ -8,6 +8,7 @@ import { RootType } from "../../../redux/store"
 import { toggleLoginDialog } from "../../../redux/slices/authSlice"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
+import { AUTHENTICATED_ADMIN_PAGES } from "../../../utils/constants"
 
 interface NavListProps {
   orientation: "desktop" | "mobile"
@@ -69,7 +70,7 @@ const NavList = ({ orientation, toggleMenu }: NavListProps) => {
                * on other pages, if user is authenticated, the url will become '/logout'
                */
               item.label === "Admin"
-                ? router.asPath === "/admin"
+                ? AUTHENTICATED_ADMIN_PAGES.includes(router.asPath)
                   ? "/logout"
                   : isAuthenticated
                   ? "/admin"
@@ -94,7 +95,8 @@ const NavList = ({ orientation, toggleMenu }: NavListProps) => {
               }
             >
               {item.id === 4 && !isAuthenticated && <LockOutlinedIcon />}
-              {item.label === "Admin" && router.asPath === "/admin"
+              {item.label === "Admin" &&
+              AUTHENTICATED_ADMIN_PAGES.includes(router.asPath)
                 ? "Logout"
                 : item.label}
             </ListItem>

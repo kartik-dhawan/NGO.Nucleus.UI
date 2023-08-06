@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <Box className="robotoCondensed" component="nav" sx={styles.navbarWrapper}>
-      <Box sx={styles.navbarAppTitleWrapper}>
+      <Box component="a" href="/" sx={styles.navbarAppTitleWrapper}>
         {content?.appIcon && (
           <Image
             src={content?.appIcon?.fields.file.url}

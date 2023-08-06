@@ -24,6 +24,8 @@ export const styles = {
       md: "0px 28px",
     },
     padding: "8px 0px",
+    color: "#111",
+    textDecoration: "none",
   },
   navbarTitle: {
     width: "5rem",

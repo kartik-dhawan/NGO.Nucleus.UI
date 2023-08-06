@@ -24,7 +24,7 @@ export const middleware = (req: NextRequest) => {
 }
 
 export const config = {
-  matcher: ["/admin", "/logout"],
+  matcher: ["/admin", "/admin/donations", "/admin/contacts", "/logout"],
   unstable_allowDynamic: [
     // FIX
     "**/node_modules/lodash/lodash.js", // use a glob to allow anything in the function-bind 3rd party module
