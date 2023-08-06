@@ -39,7 +39,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         <Box className="poppins" sx={styles.adminLayoutDrawerTitle}>
           Admin Dashboard
         </Box>
-        <Divider variant="middle" sx={{ margin: "16px" }} />
+        <Divider variant="middle" sx={styles.adminLayoutDivider} />
         <Box sx={styles.adminLayoutDrawerSubhead}>Menu</Box>
         <Box sx={styles.adminLayoutDrawerItemsWrapper}>
           {drawerItems.map((item: DrawerItem) => {
@@ -52,6 +52,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
           })}
         </Box>
       </Drawer>
+      <Divider variant="middle" sx={styles.adminLayoutSecondaryDivider} />
       <Fade in={true} timeout={{ appear: 500, enter: 1000, exit: 500 }}>
         <Box sx={styles.adminLayoutChildrenWrapper}>{children}</Box>
       </Fade>

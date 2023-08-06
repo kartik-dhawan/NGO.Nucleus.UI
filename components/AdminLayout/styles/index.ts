@@ -2,7 +2,15 @@ export const styles = {
   adminLayoutWrapper: {
     position: "relative",
     display: "flex",
+    flexDirection: {
+      xs: "column",
+      md: "row",
+    },
     margin: "2rem 0rem",
+    alignItems: {
+      xs: "center",
+      md: "inherit",
+    },
   },
   adminLayoutDrawer: {
     width: "max-content",
@@ -10,17 +18,44 @@ export const styles = {
     ["& .MuiDrawer-paper"]: {
       boxSizing: "border-box",
       height: "max-content",
-      minHeight: "720px",
+      minHeight: {
+        md: "720px",
+      },
       position: "relative",
       zIndex: 0,
+      display: "flex",
+      flexDirection: {
+        xs: "row",
+        md: "column",
+      },
+      width: {
+        xs: "100vw",
+        md: "max-content",
+      },
+      overflowX: "scroll",
     },
   },
   adminLayoutDrawerTitle: {
     display: "flex",
     alignItems: "center",
-    gap: "16px",
-    margin: "24px 24px 0px",
-    fontSize: "24px",
+    gap: {
+      xs: "8px",
+      md: "16px",
+    },
+    margin: {
+      xs: "0px 24px",
+      md: "24px 24px 0px",
+    },
+    fontSize: {
+      xs: "20px",
+      md: "24px",
+    },
+    minWidth: "200px",
+    width: "max-content",
+    textDecoration: {
+      xs: "underline",
+      md: "none",
+    },
   },
   adminLayoutDrawerSubhead: {
     textTransform: "uppercase",
@@ -29,11 +64,19 @@ export const styles = {
     fontWeight: 500,
     color: "#555",
     letterSpacing: "1px",
+    display: {
+      xs: "none",
+      md: "inline-block",
+    },
   },
   adminLayoutDrawerItemsWrapper: {
-    margin: "0px 32px",
+    margin: {
+      md: "0px 32px",
+    },
     display: "flex",
-    flexDirection: "column",
+    flexDirection: {
+      md: "column",
+    },
     gap: "8px",
     position: "relative",
     "& > a": {
@@ -52,9 +95,24 @@ export const styles = {
   },
   adminLayoutChildrenWrapper: {
     overflowY: "scroll",
-    height: "720px",
+    minHeight: {
+      md: "720px",
+    },
     padding: "2rem",
     boxSizing: "border-box",
   },
-  // adminLayout
+  adminLayoutDivider: {
+    margin: "16px",
+    display: {
+      xs: "none",
+      md: "inherit",
+    },
+  },
+  adminLayoutSecondaryDivider: {
+    margin: "8px",
+    width: "97vw",
+    display: {
+      md: "none",
+    },
+  },
 }
