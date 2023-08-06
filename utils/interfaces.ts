@@ -9,6 +9,11 @@ export interface HomePageProps {
   environment: ContentFulENV
 }
 
+export interface AdminPageProps {
+  content: ContentfulVariable
+  environment: ContentFulENV
+}
+
 export interface ChildrenType {
   children: ReactNode
 }
