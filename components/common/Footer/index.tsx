@@ -5,9 +5,12 @@ import { RootType } from "../../../redux/store"
 import { styles } from "./styles"
 import ContactCard from "./ContactCard"
 import References from "./References"
+import { useRouter } from "next/router"
+import { NO_CONTACT_FORM_PAGES } from "../../../utils/constants"
 
 const Footer = () => {
   const { content } = useSelector((state: RootType) => state.contentSlice)
+  const router = useRouter()
 
   return (
     <Box component="footer" sx={styles.footerWrapper}>
@@ -21,7 +24,9 @@ const Footer = () => {
       )}
       <Box sx={styles.footerDataWrapper}>
         {/* Contact us form */}
-        <ContactCard content={content} />
+        {!NO_CONTACT_FORM_PAGES.includes(router.asPath) && (
+          <ContactCard content={content} />
+        )}
         {/* footer data */}
         <References content={content} />
       </Box>

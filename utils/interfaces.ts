@@ -9,6 +9,11 @@ export interface HomePageProps {
   environment: ContentFulENV
 }
 
+export interface AdminPageProps {
+  content: ContentfulVariable
+  environment: ContentFulENV
+}
+
 export interface ChildrenType {
   children: ReactNode
 }
@@ -44,4 +49,11 @@ export interface DevelopedByRole {
 export interface LoginFormData {
   email: string
   password: string
+}
+
+export interface DrawerItem {
+  id: number
+  label: string
+  link: string
+  icon: any
 }
