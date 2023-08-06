@@ -85,7 +85,10 @@ export const styles = {
       display: "flex",
       alignItems: "center",
       gap: "8px",
-      padding: "10px 16px",
+      padding: {
+        xs: "8px 14px",
+        md: "10px 16px",
+      },
       "&:hover": {
         backgroundColor: "#ededed",
         borderRadius: "8px",

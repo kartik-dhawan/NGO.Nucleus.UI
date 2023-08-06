@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 import { setContent, setEnv } from "../../redux/slices/contentSlice"
 import { AdminPageProps } from "../../utils/interfaces"
 import AdminLayout from "../../components/AdminLayout"
+import Head from "next/head"
 
 export const getStaticProps: GetStaticProps = async () => {
   const response: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -30,7 +31,16 @@ const Contacts = ({ content, environment }: AdminPageProps) => {
     dispatch(setEnv(environment))
   }, [content, dispatch, environment])
 
-  return <AdminLayout>Contacts</AdminLayout>
+  return (
+    <>
+      <Head>
+        <title>Contacts | NGO Nucleus</title>
+        <meta name="description" content="A hub for all NGOs" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <AdminLayout>Contacts</AdminLayout>
+    </>
+  )
 }
 
 export default Contacts

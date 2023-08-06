@@ -6,12 +6,15 @@ import ContactPhoneIcon from "@mui/icons-material/ContactPhone"
 import BadgeIcon from "@mui/icons-material/Badge"
 import { DrawerItem } from "../../utils/interfaces"
 import { styles } from "./styles"
+import { useRouter } from "next/router"
 
 interface AdminLayoutProps {
   children: ReactNode
 }
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
+  const router = useRouter()
+
   const drawerItems: DrawerItem[] = [
     {
       id: 11,
@@ -44,7 +47,13 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         <Box sx={styles.adminLayoutDrawerItemsWrapper}>
           {drawerItems.map((item: DrawerItem) => {
             return (
-              <Link key={item.id} href={item.link} className="poppins">
+              <Link
+                key={item.id}
+                href={item.link}
+                className={`poppins adminLayoutDrawerItem ${
+                  item.link === router.asPath && "selected"
+                }`}
+              >
                 {item.icon}
                 <Box>{item.label}</Box>
               </Link>

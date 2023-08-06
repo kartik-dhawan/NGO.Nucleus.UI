@@ -1,0 +1,8 @@
+.adminLayoutDrawerItem {
+  &:hover {
+    background-color: #f3f3f3;
+  }
+  &.selected {
+    background-color: #e5e5e5;
+  }
+}
