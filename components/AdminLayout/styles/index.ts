@@ -42,10 +42,7 @@ export const styles = {
       xs: "8px",
       md: "16px",
     },
-    margin: {
-      xs: "0px 24px",
-      md: "24px 24px 0px",
-    },
+    margin: "0px 24px",
     fontSize: {
       xs: "20px",
       md: "24px",
