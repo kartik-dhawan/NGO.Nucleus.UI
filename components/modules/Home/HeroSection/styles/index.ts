@@ -6,6 +6,7 @@ export const styles = {
       xs: "2rem",
       md: "12rem",
     },
+    marginBottom: "6rem",
   },
   heroSectionItemWrapper: {
     display: "flex",

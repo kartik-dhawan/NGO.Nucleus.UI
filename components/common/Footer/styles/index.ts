@@ -1,7 +1,6 @@
 export const styles = {
   footerWrapper: {
     position: "relative",
-    marginTop: "6rem",
     "& > img": {
       position: "absolute",
       top: 0,

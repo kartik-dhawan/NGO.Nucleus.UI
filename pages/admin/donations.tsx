@@ -1,12 +1,12 @@
 import { EntryCollection, EntrySkeletonType } from "contentful"
 import { GetStaticProps } from "next"
 import { client } from "../../utils/contentful/client"
-import { AdminPageProps } from "../../utils/interfaces"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setContent, setEnv } from "../../redux/slices/contentSlice"
-import Head from "next/head"
+import { AdminPageProps } from "../../utils/interfaces"
 import AdminLayout from "../../components/AdminLayout"
+import Head from "next/head"
 
 export const getStaticProps: GetStaticProps = async () => {
   const response: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const Admin = ({ content, environment }: AdminPageProps) => {
+const Donation = ({ content, environment }: AdminPageProps) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -34,13 +34,13 @@ const Admin = ({ content, environment }: AdminPageProps) => {
   return (
     <>
       <Head>
-        <title>Admin | NGO Nucleus</title>
+        <title>Donations | NGO Nucleus</title>
         <meta name="description" content="A hub for all NGOs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AdminLayout>Hello</AdminLayout>
+      <AdminLayout>Donations</AdminLayout>
     </>
   )
 }
 
-export default Admin
+export default Donation

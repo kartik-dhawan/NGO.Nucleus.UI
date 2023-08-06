@@ -85,7 +85,7 @@ const NavList = ({ orientation, toggleMenu }: NavListProps) => {
               item.label === "Admin" && // eslint-disable-line
                 !isAuthenticated &&
                 dispatch(toggleLoginDialog())
-              toggleMenu()
+              toggleMenu && toggleMenu() // eslint-disable-line
             }}
           >
             <ListItem
