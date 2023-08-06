@@ -11,9 +11,10 @@ import { useRouter } from "next/router"
 
 interface NavListProps {
   orientation: "desktop" | "mobile"
+  toggleMenu?: any
 }
 
-const NavList = ({ orientation }: NavListProps) => {
+const NavList = ({ orientation, toggleMenu }: NavListProps) => {
   const dispatch = useDispatch()
   const router = useRouter()
 
@@ -84,6 +85,7 @@ const NavList = ({ orientation }: NavListProps) => {
               item.label === "Admin" && // eslint-disable-line
                 !isAuthenticated &&
                 dispatch(toggleLoginDialog())
+              toggleMenu()
             }}
           >
             <ListItem

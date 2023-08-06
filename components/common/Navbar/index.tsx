@@ -78,7 +78,7 @@ const Navbar = () => {
           },
         }}
       >
-        <NavList orientation="mobile" />
+        <NavList orientation="mobile" toggleMenu={toggleMenu} />
         <Button
           disableRipple
           onClick={toggleMenu}
