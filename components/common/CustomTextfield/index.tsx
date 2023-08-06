@@ -9,6 +9,8 @@ interface CustomTextFieldProps {
     | undefined
   value?: string
   type?: string
+  helperText?: string
+  required?: boolean
 }
 
 const CustomTextField = ({
@@ -16,6 +18,8 @@ const CustomTextField = ({
   onChange,
   value,
   type,
+  helperText,
+  required,
 }: CustomTextFieldProps) => {
   return (
     <TextField
@@ -25,6 +29,8 @@ const CustomTextField = ({
       label={label}
       value={value}
       onChange={onChange}
+      helperText={helperText}
+      required={required}
     />
   )
 }
