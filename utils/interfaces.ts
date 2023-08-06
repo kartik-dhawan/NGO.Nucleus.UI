@@ -50,3 +50,10 @@ export interface LoginFormData {
   email: string
   password: string
 }
+
+export interface DrawerItem {
+  id: number
+  label: string
+  link: string
+  icon: any
+}

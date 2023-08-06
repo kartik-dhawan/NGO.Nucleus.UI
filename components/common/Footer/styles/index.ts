@@ -1,8 +1,6 @@
 export const styles = {
   footerWrapper: {
     position: "relative",
-    minHeight: "720px",
-    marginTop: "6rem",
     "& > img": {
       position: "absolute",
       top: 0,
@@ -19,7 +17,6 @@ export const styles = {
     boxShadow: " 0 8px 8px 0 rgba( 31, 38, 135, 0.37 )",
     backdropFilter: "blur( 7px )",
     WebkitBackdropFilter: "blur( 7px )",
-    minHeight: "720px",
     padding: "0rem 2rem 2rem",
     display: "flex",
     alignItems: "center",
