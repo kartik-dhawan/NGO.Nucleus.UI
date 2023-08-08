@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import TableStructure from "../../common/TableStructure"
 import { RootType } from "../../../redux/store"
-import { Box, CircularProgress } from "@mui/material"
+import { Box } from "@mui/material"
 import { DataTableKeys } from "../../../utils/interfaces"
 
 const ContactsList = () => {
@@ -43,15 +43,11 @@ const ContactsList = () => {
 
   return (
     <Box>
-      {contactsList ? (
-        <TableStructure
-          data={contactsList}
-          keys={contactListKeys}
-          selectMenuKeys={contactStatusTypes}
-        />
-      ) : (
-        <CircularProgress />
-      )}
+      <TableStructure
+        data={contactsList}
+        keys={contactListKeys}
+        selectMenuKeys={contactStatusTypes}
+      />
     </Box>
   )
 }

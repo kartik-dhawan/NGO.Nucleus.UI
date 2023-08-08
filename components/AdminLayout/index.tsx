@@ -1,12 +1,12 @@
-import { Box, Divider, Drawer, Fade } from "@mui/material"
+import { Box, CircularProgress, Divider, Drawer, Fade } from "@mui/material"
 import Link from "next/link"
-import { ReactNode } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import MoneyIcon from "@mui/icons-material/Money"
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone"
 import BadgeIcon from "@mui/icons-material/Badge"
 import { DrawerItem } from "../../utils/interfaces"
 import { styles } from "./styles"
-import { useRouter } from "next/router"
+import { Router, useRouter } from "next/router"
 
 interface AdminLayoutProps {
   children: ReactNode
@@ -14,6 +14,24 @@ interface AdminLayoutProps {
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
   const router = useRouter()
+
+  const [routeLoader, setRouteLoader] = useState<boolean>(false)
+  useEffect(() => {
+    Router.events.on("routeChangeStart", (e) => {
+      console.log("Start" + e)
+      setRouteLoader(true)
+    })
+
+    Router.events.on("routeChangeComplete", (e) => {
+      console.log("End" + e)
+      setRouteLoader(false)
+    })
+
+    Router.events.on("routeChangeError", (e) => {
+      console.log(e)
+      setRouteLoader(false)
+    })
+  }, [Router])
 
   const drawerItems: DrawerItem[] = [
     {
@@ -76,8 +94,22 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         </Box>
       </Drawer>
       <Divider variant="middle" sx={styles.adminLayoutSecondaryDivider} />
+
       <Fade in={true} timeout={{ appear: 500, enter: 1000, exit: 500 }}>
-        <Box sx={styles.adminLayoutChildrenWrapper}>{children}</Box>
+        <Box sx={styles.adminLayoutChildrenWrapper}>
+          {routeLoader ? (
+            <CircularProgress
+              sx={{
+                position: "absolute",
+                left: "45%",
+                top: "35%",
+                color: "#111",
+              }}
+            />
+          ) : (
+            children
+          )}
+        </Box>
       </Fade>
     </Box>
   )

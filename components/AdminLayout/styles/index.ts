@@ -107,6 +107,7 @@ export const styles = {
     },
     padding: "2rem",
     boxSizing: "border-box",
+    position: "relative",
   },
   adminLayoutDivider: {
     margin: "16px",
