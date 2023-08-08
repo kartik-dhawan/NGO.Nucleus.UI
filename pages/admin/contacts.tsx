@@ -1,35 +1,39 @@
 import { EntryCollection, EntrySkeletonType } from "contentful"
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import { client } from "../../utils/contentful/client"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setContent, setEnv } from "../../redux/slices/contentSlice"
-import { AdminPageProps } from "../../utils/interfaces"
+import { AdminPageProps, ContactFormData } from "../../utils/interfaces"
 import AdminLayout from "../../components/AdminLayout"
 import Head from "next/head"
+import getContactDetails from "../../lib/methods/getContactDetails"
+import { addContactDetails } from "../../redux/slices/contacts"
+import ContactsList from "../../components/modules/ContactsList"
 
-export const getStaticProps: GetStaticProps = async () => {
-  const response: EntryCollection<EntrySkeletonType, undefined, string> =
+export const getServerSideProps: GetServerSideProps = async () => {
+  const contentResponse: EntryCollection<EntrySkeletonType, undefined, string> =
     await client.getEntries({ content_type: "ngoNucleus" })
+
+  const contactResponse: ContactFormData[] = await getContactDetails()
 
   return {
     props: {
-      content: response.items[0].fields,
-      environment: response.items[0].sys.environment.sys.id,
+      content: contentResponse.items[0].fields,
+      environment: contentResponse.items[0].sys.environment.sys.id,
+      contacts: contactResponse,
     },
-    revalidate: parseInt(
-      process.env.NEXT_PUBLIC_NEXT_REVALIDATION_TIME ?? "3600",
-    ),
   }
 }
 
-const Contacts = ({ content, environment }: AdminPageProps) => {
+const Contacts = ({ content, environment, contacts }: AdminPageProps) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(setContent(content))
     dispatch(setEnv(environment))
-  }, [content, dispatch, environment])
+    contacts && dispatch(addContactDetails(contacts)) // eslint-disable-line
+  }, [content, dispatch, environment, contacts])
 
   return (
     <>
@@ -38,7 +42,9 @@ const Contacts = ({ content, environment }: AdminPageProps) => {
         <meta name="description" content="A hub for all NGOs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AdminLayout>Contacts</AdminLayout>
+      <AdminLayout>
+        <ContactsList />
+      </AdminLayout>
     </>
   )
 }

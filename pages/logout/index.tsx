@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { app } from "../../firebase/config"
 import { useDispatch } from "react-redux"
 import { toggleMenuList } from "../../redux/slices/authSlice"
+import Link from "next/link"
 
 const Logout = () => {
   const auth = getAuth(app)
@@ -24,14 +25,14 @@ const Logout = () => {
       .catch(() => {
         setIsLogoutError(true)
       })
-  }, [])
+  }, [auth, dispatch, router])
 
   return (
     <>
       <pre>
         {isLogoutError ? (
           <>
-            Error please <a href="/logout">try again</a>
+            Error please <Link href="/logout">try again</Link>
           </>
         ) : (
           "Please wait while we log you out..."

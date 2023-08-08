@@ -100,6 +100,7 @@ export const styles = {
     },
   },
   adminLayoutChildrenWrapper: {
+    flexGrow: 1,
     overflowY: "scroll",
     minHeight: {
       md: "720px",

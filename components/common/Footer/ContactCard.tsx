@@ -83,7 +83,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
       : (setFormErrorState(true),
         setGetACallLoader(false),
         setErrorMessgae("Email is in an invalid format."))
-  }, [contactFormData])
+  }, [contactFormData, collectionRef])
 
   useEffect(() => {
     if (formSuccessIcon === true) {

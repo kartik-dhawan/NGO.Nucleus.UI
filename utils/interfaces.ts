@@ -12,6 +12,7 @@ export interface HomePageProps {
 export interface AdminPageProps {
   content: ContentfulVariable
   environment: ContentFulENV
+  contacts?: ContactFormData[]
 }
 
 export interface ChildrenType {
@@ -34,6 +35,7 @@ export interface ContactFormData {
   name: string
   email: string
   contactNumber: string
+  ucid: string
 }
 
 export interface DeveloperOrRefDetails {
@@ -63,4 +65,10 @@ export interface UserContact {
   contactNumber: string
   email?: string
   name: string
+}
+
+export interface DataTableKeys {
+  fk: string
+  key: string
+  id: number
 }
