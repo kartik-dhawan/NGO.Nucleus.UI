@@ -39,7 +39,7 @@ const ContactsList = () => {
     },
   ]
 
-  const contactStatusTypes = ["Contacted", "Recontact", "Unavailable"]
+  const contactStatusTypes = ["Contacted", "Recontact", "Invalid", "Pending"]
 
   return (
     <Box>

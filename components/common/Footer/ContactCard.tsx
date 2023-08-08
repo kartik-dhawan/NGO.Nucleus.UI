@@ -68,6 +68,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
           ...contactFormData,
           iat: Date.now(),
           ucid: uuidv4(),
+          status: "Pending",
         })
           .then((res) => {
             console.log(res)
