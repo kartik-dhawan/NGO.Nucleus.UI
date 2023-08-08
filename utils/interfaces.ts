@@ -57,3 +57,10 @@ export interface DrawerItem {
   link: string
   icon: any
 }
+
+export interface UserContact {
+  iat: number
+  contactNumber: string
+  email?: string
+  name: string
+}

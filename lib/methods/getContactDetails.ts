@@ -1,0 +1,22 @@
+import { collection, getDocs, DocumentData } from "firebase/firestore"
+import { firestore } from "../../firebase/config"
+import { FIREBASE_COLLECTIONS_LIST } from "../../utils/constants"
+
+const getContactDetails = async () => {
+  const collectionRef = collection(
+    firestore,
+    FIREBASE_COLLECTIONS_LIST.CONTACTS,
+  )
+
+  const res = await getDocs(collectionRef)
+
+  const data: DocumentData[] = []
+
+  res.forEach((doc) => {
+    data.push(doc.data())
+  })
+
+  return data
+}
+
+export default getContactDetails

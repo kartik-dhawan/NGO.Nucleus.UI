@@ -18,6 +18,7 @@ import { addDoc, collection } from "firebase/firestore"
 import { firestore } from "../../../firebase/config"
 import TaskAltIcon from "@mui/icons-material/TaskAlt"
 import ErrorOutlineIcon from "@mui/icons-material/Error"
+import { v4 as uuidv4 } from "uuid"
 
 const initialState: ContactFormData = {
   name: "",
@@ -66,6 +67,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
       ? addDoc(collectionRef, {
           ...contactFormData,
           iat: Date.now(),
+          ucid: uuidv4(),
         })
           .then((res) => {
             console.log(res)
