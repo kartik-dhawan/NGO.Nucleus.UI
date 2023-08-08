@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux"
 import TableStructure from "../../common/TableStructure"
 import { RootType } from "../../../redux/store"
-import { Box, CircularProgress, SelectChangeEvent } from "@mui/material"
+import { Box, CircularProgress } from "@mui/material"
 import { DataTableKeys } from "../../../utils/interfaces"
-import { useState } from "react"
 
 const ContactsList = () => {
   const { contactsList } = useSelector((state: RootType) => state.contactSlice)
@@ -40,11 +39,7 @@ const ContactsList = () => {
     },
   ]
 
-  const [status, setStatus] = useState("")
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setStatus(event.target.value as string)
-  }
+  const contactStatusTypes = ["Contacted", "Recontact", "Unavailable"]
 
   return (
     <Box>
@@ -52,8 +47,7 @@ const ContactsList = () => {
         <TableStructure
           data={contactsList}
           keys={contactListKeys}
-          handleSelectMenuChange={handleChange}
-          selectMenuState={status}
+          selectMenuKeys={contactStatusTypes}
         />
       ) : (
         <CircularProgress />

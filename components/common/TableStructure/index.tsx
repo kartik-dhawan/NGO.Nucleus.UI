@@ -1,10 +1,5 @@
 import {
-  FormControl,
-  InputLabel,
-  MenuItem,
   Paper,
-  Select,
-  SelectChangeEvent,
   Table,
   TableBody,
   TableCell,
@@ -12,21 +7,18 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material"
-import { Dispatch, SetStateAction } from "react"
+import CustomSelectMenu from "../CustomSelectMenu"
 
 interface TableStructureProps {
   data: any[]
   keys: any[]
-  handleSelectMenuChange?: (event: SelectChangeEvent) => void // eslint-disable-line
-  selectMenuState?: any
-  setSelectMenuState?: Dispatch<SetStateAction<string>>
+  selectMenuKeys?: string[]
 }
 
 const TableStructure = ({
   data,
   keys,
-  handleSelectMenuChange,
-  selectMenuState,
+  selectMenuKeys,
 }: TableStructureProps) => {
   return (
     <Paper
@@ -60,44 +52,20 @@ const TableStructure = ({
                   {keys.map((item: any) => {
                     const cellData = row[`${item.fk}`]
                     return (
-                      <>
+                      <TableCell key={item.id}>
                         {item.fk === "status" && (
-                          <TableCell>
-                            <FormControl size="small">
-                              <InputLabel sx={{ fontSize: "14px" }}>
-                                Status
-                              </InputLabel>
-                              <Select
-                                sx={{
-                                  width: "180px",
-                                  fontSize: "14px",
-                                }}
-                                value={selectMenuState}
-                                label="Status"
-                                onChange={handleSelectMenuChange}
-                              >
-                                <MenuItem sx={{ fontSize: "14px" }} value={1}>
-                                  Contacted
-                                </MenuItem>
-                                <MenuItem sx={{ fontSize: "14px" }} value={2}>
-                                  Recontact
-                                </MenuItem>
-                                <MenuItem sx={{ fontSize: "14px" }} value={3}>
-                                  Invalid
-                                </MenuItem>
-                              </Select>
-                            </FormControl>
-                          </TableCell>
+                          <CustomSelectMenu
+                            fkey={item.fk}
+                            label={cellData}
+                            menuList={selectMenuKeys}
+                            currentRow={row}
+                          />
                         )}
-                        {item.fk === "sno" && (
-                          <TableCell key={item.id}>{`#${index + 1}`}</TableCell>
-                        )}
-                        {item.fk !== "sno" && item.fk !== "status" && (
-                          <TableCell key={item.id}>
-                            {cellData === "" ? "-" : cellData}
-                          </TableCell>
-                        )}
-                      </>
+                        {item.fk === "sno" && `#${index + 1}`}
+                        {item.fk !== "sno" &&
+                          item.fk !== "status" &&
+                          (cellData === "" ? "-" : cellData)}
+                      </TableCell>
                     )
                   })}
                 </TableRow>
