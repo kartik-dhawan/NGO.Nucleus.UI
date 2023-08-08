@@ -35,7 +35,7 @@ export interface ContactFormData {
   name: string
   email: string
   contactNumber: string
-  ucid: string
+  ucid?: string
 }
 
 export interface DeveloperOrRefDetails {
