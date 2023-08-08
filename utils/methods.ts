@@ -15,5 +15,8 @@ export const isEmailInValidFormat = (email: string) => {
  * @returns {boolean}
  */
 export const hasTokenExpired = (expTime: number) => {
+  if (Number.isNaN(expTime)) {
+    return true
+  }
   return Math.floor((Date.now() - expTime) / 1000) > 0
 }
