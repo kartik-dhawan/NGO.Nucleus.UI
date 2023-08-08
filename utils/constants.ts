@@ -14,4 +14,5 @@ export const AUTHENTICATED_ADMIN_PAGES = [
 
 export const FIREBASE_COLLECTIONS_LIST = {
   CONTACTS: "userContactDetails",
+  NGOS: "ngos",
 }

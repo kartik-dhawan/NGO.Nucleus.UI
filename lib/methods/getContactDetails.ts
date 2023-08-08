@@ -8,10 +8,11 @@ const getContactDetails = async () => {
     FIREBASE_COLLECTIONS_LIST.CONTACTS,
   )
 
-  const resp = await getDocs(collectionRef)
+  const res = await getDocs(collectionRef)
 
   const data: DocumentData[] = []
-  resp.forEach((doc) => {
+
+  res.forEach((doc) => {
     data.push(doc.data())
   })
 
