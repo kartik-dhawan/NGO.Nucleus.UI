@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@mui/material"
 import CustomSelectMenu from "../CustomSelectMenu"
+import { styles } from "./styles"
 
 interface TableStructureProps {
   data: any[]
@@ -21,27 +22,17 @@ const TableStructure = ({
   selectMenuKeys,
 }: TableStructureProps) => {
   return (
-    <Paper
-      sx={{
-        overflow: "hidden",
-        width: "100%",
-      }}
-    >
-      <TableContainer
-        sx={{ pflexGrow: 1, maxHeight: "70vh", minHeight: "580px" }}
-      >
+    <Paper sx={{ overflow: "hidden", width: "100%" }}>
+      <TableContainer sx={styles.tableStructureWrapper}>
         <Table stickyHeader>
-          <TableHead
-            sx={{
-              "& th": {
-                color: "#d9d9d9",
-                backgroundColor: "#222",
-              },
-            }}
-          >
+          <TableHead sx={styles.tableStructureHead}>
             <TableRow className="he">
               {keys.map((item: any) => {
-                return <TableCell key={item.id}>{item.key}</TableCell>
+                return (
+                  <TableCell sx={styles.tableCellGenericStyles} key={item.id}>
+                    {item.key}
+                  </TableCell>
+                )
               })}
             </TableRow>
           </TableHead>
@@ -52,7 +43,10 @@ const TableStructure = ({
                   {keys.map((item: any) => {
                     const cellData = row[`${item.fk}`]
                     return (
-                      <TableCell key={item.id}>
+                      <TableCell
+                        key={item.id}
+                        sx={styles.tableCellGenericStyles}
+                      >
                         {item.fk === "status" && (
                           <CustomSelectMenu
                             fkey={item.fk}

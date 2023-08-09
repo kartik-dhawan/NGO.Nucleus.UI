@@ -66,7 +66,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
     isEmailInValidFormat(contactFormData.email)
       ? addDoc(collectionRef, {
           ...contactFormData,
-          iat: Date.now(),
+          iat: new Date().toLocaleDateString(),
           ucid: uuidv4(),
           status: "Pending",
         })
