@@ -11,6 +11,7 @@ import {
 } from "@mui/material"
 import { useCallback, useState } from "react"
 import { makePutRequest } from "../../../utils/methods"
+import { API_END_POINTS } from "../../../utils/constants"
 
 interface CustomSelectMenuProps {
   label: string
@@ -36,7 +37,7 @@ const CustomSelectMenu = ({
         ...currentRow,
       }
       res[`${fkey}`] = event.target.value as string
-      makePutRequest(`/api/cntact/${currentRow.id}`, res)
+      makePutRequest(`${API_END_POINTS.update_contact}/${currentRow.id}`, res)
         .then(() => {
           setState(event.target.value as string)
           setEditMenuToggle(false)
