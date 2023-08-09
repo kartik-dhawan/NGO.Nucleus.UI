@@ -2,7 +2,7 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { firestore } from "../../firebase/config"
 import { FIREBASE_COLLECTIONS_LIST } from "../../utils/constants"
 
-const getContactDetails = async () => {
+export const getAllContacts = async () => {
   const collectionRef = collection(
     firestore,
     FIREBASE_COLLECTIONS_LIST.CONTACTS,
@@ -15,10 +15,11 @@ const getContactDetails = async () => {
   const data: any = []
 
   res.forEach((doc) => {
-    data.push(doc.data())
+    data.push({
+      ...doc.data(),
+      id: doc.id,
+    })
   })
 
   return data
 }
-
-export default getContactDetails
