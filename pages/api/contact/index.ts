@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 import getContactDetails from "../../../lib/methods/getContactDetails"
 import apiMiddleware from "../../../lib/apiMiddleware"
 
-const Contact = async (req: NextApiRequest, res: NextApiResponse<any>) => {
+const Contact = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = req.headers.authorization
 
   if (req.method === "GET") {

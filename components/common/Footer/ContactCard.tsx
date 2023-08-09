@@ -68,6 +68,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
           ...contactFormData,
           iat: Date.now(),
           ucid: uuidv4(),
+          status: "Pending",
         })
           .then((res) => {
             console.log(res)
@@ -83,7 +84,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
       : (setFormErrorState(true),
         setGetACallLoader(false),
         setErrorMessgae("Email is in an invalid format."))
-  }, [contactFormData])
+  }, [contactFormData, collectionRef])
 
   useEffect(() => {
     if (formSuccessIcon === true) {

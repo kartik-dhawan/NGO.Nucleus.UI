@@ -100,12 +100,14 @@ export const styles = {
     },
   },
   adminLayoutChildrenWrapper: {
+    flexGrow: 1,
     overflowY: "scroll",
     minHeight: {
       md: "720px",
     },
     padding: "2rem",
     boxSizing: "border-box",
+    position: "relative",
   },
   adminLayoutDivider: {
     margin: "16px",

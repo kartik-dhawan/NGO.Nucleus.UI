@@ -1,4 +1,4 @@
-import { collection, getDocs, DocumentData } from "firebase/firestore"
+import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { firestore } from "../../firebase/config"
 import { FIREBASE_COLLECTIONS_LIST } from "../../utils/constants"
 
@@ -8,9 +8,11 @@ const getContactDetails = async () => {
     FIREBASE_COLLECTIONS_LIST.CONTACTS,
   )
 
-  const res = await getDocs(collectionRef)
+  const q = query(collectionRef, orderBy("name", "asc"))
 
-  const data: DocumentData[] = []
+  const res = await getDocs(q)
+
+  const data: any = []
 
   res.forEach((doc) => {
     data.push(doc.data())
