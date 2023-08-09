@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next"
-import getContactDetails from "../../../lib/methods/getContactDetails"
+import { getAllContacts } from "../../../lib/methods/getAllContacts"
 import apiMiddleware from "../../../lib/apiMiddleware"
 
 const Contact = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -12,7 +12,7 @@ const Contact = async (req: NextApiRequest, res: NextApiResponse) => {
     if (!res.headersSent) {
       // if not then fetch data & send
       try {
-        const data = await getContactDetails()
+        const data = await getAllContacts()
         return res.status(200).json(data)
       } catch (error: any) {
         return res.status(500).json({

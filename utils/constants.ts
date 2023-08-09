@@ -16,3 +16,7 @@ export const FIREBASE_COLLECTIONS_LIST = {
   CONTACTS: "userContactDetails",
   NGOS: "ngos",
 }
+
+export const API_END_POINTS = {
+  update_contact: "/api/contact",
+}

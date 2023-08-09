@@ -1,3 +1,22 @@
+import axios from "axios"
+
+/**
+ *
+ * @param {string} url
+ * @param {any} body
+ */
+export const makePutRequest = async (url: string, body: any = {}) => {
+  const token =
+    JSON.parse(localStorage.getItem("firebase-token-storage") ?? "{}")
+      .accessToken ?? ""
+
+  await axios.put(url, body, {
+    headers: {
+      Authorization: token ?? "",
+    },
+  })
+}
+
 /**
  *
  * @param {string} email

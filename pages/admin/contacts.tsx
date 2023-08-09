@@ -7,7 +7,7 @@ import { setContent, setEnv } from "../../redux/slices/contentSlice"
 import { AdminPageProps, ContactFormData } from "../../utils/interfaces"
 import AdminLayout from "../../components/AdminLayout"
 import Head from "next/head"
-import getContactDetails from "../../lib/methods/getContactDetails"
+import { getAllContacts } from "../../lib/methods/getAllContacts"
 import { addContactDetails } from "../../redux/slices/contacts"
 import ContactsList from "../../components/modules/ContactsList"
 
@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const contentResponse: EntryCollection<EntrySkeletonType, undefined, string> =
     await client.getEntries({ content_type: "ngoNucleus" })
 
-  const contactResponse: ContactFormData[] = await getContactDetails()
+  const contactResponse: ContactFormData[] = await getAllContacts()
 
   return {
     props: {
