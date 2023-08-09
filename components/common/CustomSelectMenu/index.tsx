@@ -7,8 +7,10 @@ import {
   Box,
   Button,
   Fade,
+  CircularProgress,
 } from "@mui/material"
 import { useCallback, useState } from "react"
+import { makePutRequest } from "../../../utils/methods"
 
 interface CustomSelectMenuProps {
   label: string
@@ -25,17 +27,25 @@ const CustomSelectMenu = ({
 }: CustomSelectMenuProps) => {
   const [state, setState] = useState(currentRow[`${fkey}`])
   const [editMenuToggle, setEditMenuToggle] = useState<boolean>(false)
+  const [statusEditLoader, setStatusEditLoader] = useState<boolean>(false)
 
   const handleChange = useCallback(
     (event: SelectChangeEvent) => {
-      console.log(currentRow)
-      setState(event.target.value as string)
+      setStatusEditLoader(true)
       const res = {
         ...currentRow,
       }
       res[`${fkey}`] = event.target.value as string
-      console.log(res)
-      setEditMenuToggle(false)
+      makePutRequest(`/api/cntact/${currentRow.id}`, res)
+        .then(() => {
+          setState(event.target.value as string)
+          setEditMenuToggle(false)
+          setStatusEditLoader(false)
+        })
+        .catch((err) => {
+          setStatusEditLoader(false)
+          console.log(err)
+        })
     },
     [currentRow],
   )
@@ -85,9 +95,26 @@ const CustomSelectMenu = ({
             display: "flex",
             alignItems: "center",
             width: "180px",
+            justifyContent: "space-between",
           }}
         >
-          <Box>{state}</Box>
+          <Box>
+            {statusEditLoader ? (
+              <CircularProgress
+                sx={{
+                  width: "24px !important",
+                  height: "24px !important",
+                }}
+              />
+            ) : (
+              <Fade
+                in={!statusEditLoader}
+                timeout={{ appear: 500, enter: 1000, exit: 500 }}
+              >
+                <div>{state}</div>
+              </Fade>
+            )}
+          </Box>
           <Button onClick={handleEditToggleClick}>Edit</Button>
         </Box>
       </Fade>
