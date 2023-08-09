@@ -12,6 +12,9 @@ import {
 import { useCallback, useState } from "react"
 import { makePutRequest } from "../../../utils/methods"
 import { API_END_POINTS } from "../../../utils/constants"
+import EditIcon from "@mui/icons-material/Edit"
+import CancelIcon from "@mui/icons-material/Cancel"
+import { styles } from "./styles"
 
 interface CustomSelectMenuProps {
   label: string
@@ -56,19 +59,18 @@ const CustomSelectMenu = ({
   }, [])
 
   const handleEditToggleClick = useCallback(() => {
-    setEditMenuToggle(true)
+    setEditMenuToggle((state) => !state)
   }, [])
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box sx={styles.customSelectEditMenuWrapper}>
       <Fade in={editMenuToggle}>
-        <FormControl size="small" sx={{ position: "absolute" }}>
-          <InputLabel sx={{ fontSize: "14px" }}>{label}</InputLabel>
+        <FormControl size="small" sx={styles.customSelectEditMenuFormWrapper}>
+          <InputLabel sx={{ fontSize: "14px", textTransform: "capitalize" }}>
+            {label}
+          </InputLabel>
           <Select
-            sx={{
-              width: "180px",
-              fontSize: "14px",
-            }}
+            sx={{ fontSize: "14px" }}
             value={state}
             label={label}
             onClick={handleClick}
@@ -91,34 +93,26 @@ const CustomSelectMenu = ({
         </FormControl>
       </Fade>
       <Fade in={!editMenuToggle}>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            width: "180px",
-            justifyContent: "space-between",
-          }}
-        >
-          <Box>
-            {statusEditLoader ? (
-              <CircularProgress
-                sx={{
-                  width: "24px !important",
-                  height: "24px !important",
-                }}
-              />
-            ) : (
-              <Fade
-                in={!statusEditLoader}
-                timeout={{ appear: 500, enter: 1000, exit: 500 }}
-              >
-                <div>{state}</div>
-              </Fade>
-            )}
-          </Box>
-          <Button onClick={handleEditToggleClick}>Edit</Button>
+        <Box sx={styles.customSelectEditMenuFieldValue}>
+          {statusEditLoader ? (
+            <CircularProgress sx={styles.customSelectEditMenuLoader} />
+          ) : (
+            <Fade
+              in={!statusEditLoader}
+              timeout={{ appear: 500, enter: 1000, exit: 500 }}
+            >
+              <div>{state}</div>
+            </Fade>
+          )}
         </Box>
       </Fade>
+      <Button
+        disableRipple
+        sx={styles.customSelectEditMenuEditCancelBtn}
+        onClick={handleEditToggleClick}
+      >
+        {editMenuToggle ? <CancelIcon /> : <EditIcon />}
+      </Button>
     </Box>
   )
 }

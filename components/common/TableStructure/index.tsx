@@ -56,7 +56,7 @@ const TableStructure = ({
                         {item.fk === "status" && (
                           <CustomSelectMenu
                             fkey={item.fk}
-                            label={cellData}
+                            label={item.key}
                             menuList={selectMenuKeys}
                             currentRow={row}
                           />
