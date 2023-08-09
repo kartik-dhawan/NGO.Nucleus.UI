@@ -105,7 +105,7 @@ export const styles = {
     minHeight: {
       md: "720px",
     },
-    padding: "2rem",
+
     boxSizing: "border-box",
     position: "relative",
   },

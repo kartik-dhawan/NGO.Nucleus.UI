@@ -8,7 +8,7 @@ export const getAllContacts = async () => {
     FIREBASE_COLLECTIONS_LIST.CONTACTS,
   )
 
-  const q = query(collectionRef, orderBy("name", "asc"))
+  const q = query(collectionRef, orderBy("iat", "desc"))
 
   const res = await getDocs(q)
 
