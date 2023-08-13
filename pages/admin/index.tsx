@@ -1,12 +1,12 @@
-import Head from "next/head"
-import { GetStaticProps } from "next"
-import { client } from "../utils/contentful/client"
 import { EntryCollection, EntrySkeletonType } from "contentful"
+import { GetStaticProps } from "next"
+import { client } from "../../utils/contentful/client"
+import { AdminPageProps } from "../../utils/interfaces"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { setContent, setEnv } from "../redux/slices/contentSlice"
-import { HomePageProps } from "../utils/interfaces"
-import HeroSection from "../components/modules/Home/HeroSection"
+import { setContent, setEnv } from "../../redux/slices/contentSlice"
+import Head from "next/head"
+import AdminLayout from "../../components/AdminLayout"
 
 export const getStaticProps: GetStaticProps = async () => {
   const response: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function Home({ content, environment }: HomePageProps) {
+const Admin = ({ content, environment }: AdminPageProps) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -32,16 +32,15 @@ export default function Home({ content, environment }: HomePageProps) {
   }, [content, dispatch, environment])
 
   return (
-    <div>
+    <>
       <Head>
-        <title>NGO Nucleus</title>
+        <title>Admin | NGO Nucleus</title>
         <meta name="description" content="A hub for all NGOs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <HeroSection />
-      </main>
-    </div>
+      <AdminLayout>Hello</AdminLayout>
+    </>
   )
 }
+
+export default Admin
