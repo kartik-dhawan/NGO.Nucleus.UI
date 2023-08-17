@@ -9,6 +9,8 @@ import getNgoDetails from "../../lib/methods/getNgoDetails"
 import { setNgosList } from "../../redux/slices/ngoSlice"
 import { Box, Divider } from "@mui/material"
 import Head from "next/head"
+import NgosList from "../../components/modules/NgosList"
+import { styles } from "../../components/modules/NgosList/styles"
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const contentResponse: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -41,28 +43,18 @@ const Ngos = ({ content, ngoList }: NgosPageProps) => {
         <meta name="description" content="A hub for all NGOs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box
-        component="h2"
-        sx={{
-          margin: 0,
-          fontSize: "48px",
-          textTransform: "uppercase",
-          letterSpacing: "-2px",
-        }}
-        className="robotoCondensed"
-      >
+      <Box component="h2" sx={styles.ngoPageTitle} className="robotoCondensed">
         {ngoPageTitle}
       </Box>
       <Box
         component="p"
-        sx={{
-          margin: 0,
-        }}
+        sx={styles.ngoPageSubtitle}
         className="robotoCondensed"
       >
         {ngoPageSubtitle}
       </Box>
-      <Divider sx={{ margin: "8px 0px", borderColor: "#ccc" }} />
+      <Divider sx={styles.ngoPageDivider} />
+      {ngoList.length !== 0 && <NgosList ngosData={ngoList} />}
     </Box>
   )
 }
