@@ -1,8 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { NgoStateType } from "../stateInterfaces"
+import { GenericCardItem } from "../../utils/interfaces"
 
 const initialState: NgoStateType = {
   ngoList: [],
+  ngoCardDataList: [],
 }
 
 const ngoSlice = createSlice({
@@ -12,8 +14,14 @@ const ngoSlice = createSlice({
     setNgosList: (state: NgoStateType, action: PayloadAction<any[]>) => {
       state.ngoList = action.payload
     },
+    setNgoCardDataList: (
+      state: NgoStateType,
+      action: PayloadAction<GenericCardItem[]>,
+    ) => {
+      state.ngoCardDataList = action.payload
+    },
   },
 })
 
-export const { setNgosList } = ngoSlice.actions
+export const { setNgosList, setNgoCardDataList } = ngoSlice.actions
 export default ngoSlice.reducer

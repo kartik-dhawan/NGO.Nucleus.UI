@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import getNgoDetails from "../../../lib/methods/getNgoDetails"
+import { getNgoDetails } from "../../../lib/methods/getNgoDetails"
 import apiMiddleware from "../../../lib/apiMiddleware"
 
 const NgoList = async (req: NextApiRequest, res: NextApiResponse) => {

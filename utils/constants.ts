@@ -6,6 +6,7 @@ export const NO_CONTACT_FORM_PAGES = [
   "/admin",
   "/admin/donations",
   "/admin/contacts",
+  // "/ngos",
 ]
 
 export const AUTHENTICATED_ADMIN_PAGES = [

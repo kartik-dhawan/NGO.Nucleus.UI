@@ -22,6 +22,15 @@ export interface ChildrenType {
 export interface NgosPageProps {
   content: ContentfulVariable
   ngoList: any
+  ngoCardData: any
+}
+
+export interface GenericCardItem {
+  id: string
+  title: string
+  url?: string
+  image: string
+  desc: string
 }
 
 // other interfaces
