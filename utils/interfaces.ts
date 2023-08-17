@@ -19,6 +19,10 @@ export interface ChildrenType {
   children: ReactNode
 }
 
+export interface NgosPageProps {
+  content: ContentfulVariable
+}
+
 // other interfaces
 export interface CustomStyles {
   [key: string]: SxProps<Theme>
