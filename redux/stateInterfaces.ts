@@ -1,4 +1,4 @@
-import { ContactFormData } from "../utils/interfaces"
+import { ContactFormData, GenericCardItem } from "../utils/interfaces"
 
 export type ContentfulVariable = { [key: string]: any }
 
@@ -16,4 +16,9 @@ export interface AuthStateType {
 
 export interface ContactStateType {
   contactsList: ContactFormData[]
+}
+
+export interface NgoStateType {
+  ngoList: any[] // eslint-disable-line
+  ngoCardDataList: GenericCardItem[] // eslint-disable-line
 }

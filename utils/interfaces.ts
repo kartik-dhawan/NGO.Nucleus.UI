@@ -19,6 +19,20 @@ export interface ChildrenType {
   children: ReactNode
 }
 
+export interface NgosPageProps {
+  content: ContentfulVariable
+  ngoList: any
+  ngoCardData: any
+}
+
+export interface GenericCardItem {
+  id: string
+  title: string
+  url?: string
+  image: string
+  desc: string
+}
+
 // other interfaces
 export interface CustomStyles {
   [key: string]: SxProps<Theme>
