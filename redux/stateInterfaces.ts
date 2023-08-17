@@ -17,3 +17,7 @@ export interface AuthStateType {
 export interface ContactStateType {
   contactsList: ContactFormData[]
 }
+
+export interface NgoStateType {
+  ngoList: any[]
+}

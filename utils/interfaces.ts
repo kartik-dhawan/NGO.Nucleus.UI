@@ -21,6 +21,7 @@ export interface ChildrenType {
 
 export interface NgosPageProps {
   content: ContentfulVariable
+  ngoList: any
 }
 
 // other interfaces

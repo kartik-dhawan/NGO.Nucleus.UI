@@ -20,6 +20,7 @@ const Footer = () => {
           alt={content?.footerBackgroundImage?.fields.description}
           width={5760}
           height={3840}
+          priority
         />
       )}
       <Box sx={styles.footerDataWrapper}>
