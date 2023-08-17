@@ -38,5 +38,11 @@ export const styles = {
     },
     WebkitBoxOrient: "vertical",
   },
-  // ngoCard
+  ngoCardReadMoreButton: {
+    color: "#111",
+    backgroundColor: "#FBEF4A",
+    borderRadius: 0,
+    fontSize: "16px",
+    margin: "0px 8px 16px 8px",
+  },
 }

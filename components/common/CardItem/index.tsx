@@ -1,15 +1,26 @@
-import { Box, Card, CardContent, CardMedia } from "@mui/material"
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+} from "@mui/material"
 import Image from "next/image"
 import Link from "next/link"
 import OpenInNewIcon from "@mui/icons-material/OpenInNew"
 import { styles } from "./styles"
 import { GenericCardItem } from "../../../utils/interfaces"
+import { useRouter } from "next/router"
 
 interface NgoCardProps {
   cardData: GenericCardItem
 }
 
 const CardItem = ({ cardData }: NgoCardProps) => {
+  const router = useRouter()
+  const url = `/ngo/${cardData.id}`
+
   return (
     <Card sx={styles.ngoCardWrapper} className="robotoCondensed">
       <CardMedia sx={styles.ngoCardMediaWrapper}>
@@ -26,6 +37,19 @@ const CardItem = ({ cardData }: NgoCardProps) => {
         </Box>
         <Box sx={styles.ngoCardDescription}>{cardData.desc}</Box>
       </CardContent>
+      {router.asPath === "/ngos" && (
+        <CardActions sx={{ paddingBottom: 0 }}>
+          <Button
+            className="robotoCondensed"
+            sx={styles.ngoCardReadMoreButton}
+            onClick={() => {
+              window.open(url, "_blank")
+            }}
+          >
+            Read More
+          </Button>
+        </CardActions>
+      )}
     </Card>
   )
 }
