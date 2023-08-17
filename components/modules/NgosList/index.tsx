@@ -1,17 +1,25 @@
-import { Box } from "@mui/material"
+import { Box, Skeleton } from "@mui/material"
 import NgoCard from "./NgoCard"
 import { styles } from "./styles"
+import { useSelector } from "react-redux"
+import { RootType } from "../../../redux/store"
 
-interface NgosListProps {
-  ngosData: any[] // eslint-disable-line
-}
+const NgosList = () => {
+  const { ngoList } = useSelector((state: RootType) => state.ngoSlice)
 
-const NgosList = ({ ngosData }: NgosListProps) => {
   return (
     <Box sx={styles.ngoListWrapper}>
-      {ngosData.map((item) => {
-        return <NgoCard key={item.id} cardData={item} />
-      })}
+      {ngoList ? (
+        ngoList.map((item) => {
+          return <NgoCard key={item.id} cardData={item} />
+        })
+      ) : (
+        <>
+          <Skeleton sx={styles.ngoCardSkeletonBox} />
+          <Skeleton sx={styles.ngoCardSkeletonBox} />
+          <Skeleton sx={styles.ngoCardSkeletonBox} />
+        </>
+      )}
     </Box>
   )
 }

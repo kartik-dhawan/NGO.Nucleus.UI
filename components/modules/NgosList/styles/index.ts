@@ -19,4 +19,5 @@ export const styles = {
     margin: "2rem 0rem",
   },
   // NGO Card
+  ngoCardSkeletonBox: { height: "400px" },
 }
