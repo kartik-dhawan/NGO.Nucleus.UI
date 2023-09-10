@@ -13,7 +13,7 @@ const Footer = () => {
   const router = useRouter()
 
   return (
-    <Box component="footer" sx={styles.footerWrapper}>
+    <Box component="footer" sx={styles.footerWrapper} id="contact">
       {content.footerBackgroundImage && (
         <Image
           src={"https:" + content?.footerBackgroundImage?.fields.file.url}

@@ -7,8 +7,11 @@ import { styles } from "./styles"
 import PrimaryButton from "../../../common/Buttons/PrimaryButton"
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt"
 import LoginPopup from "../../../LoginPopup"
+import { useRouter } from "next/router"
 
 const HeroSection = () => {
+  const router = useRouter()
+
   const { content } = useSelector((state: RootType) => state.contentSlice)
   const { loginDialog } = useSelector((state: RootType) => state.authSlice)
 
@@ -43,7 +46,12 @@ const HeroSection = () => {
                     documentToReactComponents(content?.heroLandingSectionBody)}
                   {index === 1 &&
                     documentToReactComponents(content?.heroQuoteSectionBody)}
-                  <PrimaryButton icon={<ArrowRightAltIcon />}>
+                  <PrimaryButton
+                    icon={<ArrowRightAltIcon />}
+                    onClick={() => {
+                      router.push("/ngos")
+                    }}
+                  >
                     {content.heroLandingSectionButtonText[index]}
                   </PrimaryButton>
                 </Box>

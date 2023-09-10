@@ -1,9 +1,9 @@
 import { Box, CircularProgress, Divider, Drawer, Fade } from "@mui/material"
 import Link from "next/link"
 import { ReactNode, useEffect, useState } from "react"
-import MoneyIcon from "@mui/icons-material/Money"
+// import MoneyIcon from "@mui/icons-material/Money"
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone"
-import BadgeIcon from "@mui/icons-material/Badge"
+// import BadgeIcon from "@mui/icons-material/Badge"
 import { DrawerItem } from "../../utils/interfaces"
 import { styles } from "./styles"
 import { Router, useRouter } from "next/router"
@@ -34,18 +34,18 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   }, [Router])
 
   const drawerItems: DrawerItem[] = [
-    {
-      id: 11,
-      label: "Profile",
-      link: "/admin",
-      icon: <BadgeIcon />,
-    },
-    {
-      id: 12,
-      label: "Donations",
-      link: "/admin/donations",
-      icon: <MoneyIcon />,
-    },
+    // {
+    //   id: 11,
+    //   label: "Profile",
+    //   link: "/admin",
+    //   icon: <BadgeIcon />,
+    // },
+    // {
+    //   id: 12,
+    //   label: "Donations",
+    //   link: "/admin/donations",
+    //   icon: <MoneyIcon />,
+    // },
     {
       id: 13,
       label: "Contacts",

@@ -67,7 +67,7 @@ const LoginPopup = () => {
   const closePopupHandler = useCallback(() => {
     dispatch(toggleLoginDialog())
     dispatch(toggleMenuList(false))
-    router.push("/")
+    router.push(router.asPath)
   }, [dispatch, router])
 
   const loginHandler = useCallback(() => {
