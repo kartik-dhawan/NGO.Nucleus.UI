@@ -27,4 +27,6 @@ export interface NgoStateType {
   ngoCardDataList: GenericCardItem[] // eslint-disable-line
   currentNgoListItem: GenericDonateListItem | null
   donateToSuccess: boolean
+  emailPopup: boolean
+  email: string
 }

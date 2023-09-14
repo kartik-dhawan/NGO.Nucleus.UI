@@ -7,6 +7,8 @@ const initialState: NgoStateType = {
   ngoCardDataList: [],
   currentNgoListItem: null,
   donateToSuccess: false,
+  emailPopup: false,
+  email: "",
 }
 
 const ngoSlice = createSlice({
@@ -32,6 +34,13 @@ const ngoSlice = createSlice({
     resetDonateToSuccess: (state: NgoStateType) => {
       state.donateToSuccess = false
     },
+    setUserDonationEmail: (
+      state: NgoStateType,
+      action: PayloadAction<string>,
+    ) => {
+      state.email = action.payload
+      state.emailPopup = false
+    },
   },
 })
 
@@ -40,5 +49,7 @@ export const {
   setNgoCardDataList,
   setCurrentNgoListData,
   resetDonateToSuccess,
+  setUserDonationEmail,
 } = ngoSlice.actions
+
 export default ngoSlice.reducer

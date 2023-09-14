@@ -54,14 +54,14 @@ export const getNgoListDetails = async () => {
     const ngo = { ...resdata }
 
     const dataItem: GenericDonateListItem = {
-      ucid: ngo.id,
-      title: ngo.name,
-      fundCampaign: ngo.fundCampaign,
-      fundsCollected: ngo.fundsCollected,
-      fundGoals: ngo.fundGoals,
-      contactNumber: ngo.contactNumber.join(", "),
-      founder: ngo.founder.name,
-      website: ngo.website,
+      ucid: ngo.id ?? 1,
+      title: ngo?.name ?? "",
+      fundCampaign: ngo?.fundCampaign ?? "",
+      fundsCollected: ngo?.fundsCollected ?? "",
+      fundGoals: ngo?.fundGoals ?? "",
+      contactNumber: ngo?.contactNumber?.join(", ") ?? "",
+      founder: ngo?.founder?.name ?? "",
+      website: ngo?.website ?? "",
     }
 
     data.push(dataItem)

@@ -12,6 +12,7 @@ import TableStructure from "../../components/common/TableStructure"
 import { NGO_DATA_KEYS } from "../../utils/constants"
 import Link from "next/link"
 import { RootType } from "../../redux/store"
+import LoginPopup from "../../components/LoginPopup"
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const contentResponse: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -39,45 +40,60 @@ const DonatePage = ({ content, environment, ngoData }: DonatePageProps) => {
   const { currentNgoListItem, donateToSuccess } = useSelector(
     (state: RootType) => state.ngoSlice,
   )
+  const { loginDialog } = useSelector((state: RootType) => state.authSlice)
 
   return (
     <Box
       sx={{
-        margin: "6rem 2rem",
+        margin: "2rem",
         maxWidth: {
           xs: "100vw",
           lg: "100vw",
         },
       }}
     >
-      <Box sx={{ position: "relative" }}>
-        {donateToSuccess && (
-          <Box
-            sx={{
-              position: "absolute",
-              top: "-60px",
-              width: "100%",
-              "& div": {
-                margin: "2px",
-              },
-              "& a": {
-                color: "#b9ad28",
-              },
-            }}
-          >
-            <Box>
-              Thank you for donating to{" "}
-              <Link href={currentNgoListItem?.website ?? "#!"}>
-                {currentNgoListItem?.title ?? "the NGO"}
-              </Link>
+      {loginDialog && <LoginPopup />}
+      <Box
+        component="h1"
+        className="cormorant"
+        sx={{ textAlign: "center", fontSize: "48px" }}
+      >
+        Wish to be a helping hand?
+      </Box>
+      <Box
+        sx={{
+          margin: "6rem 0rem",
+        }}
+      >
+        <Box sx={{ position: "relative" }}>
+          {donateToSuccess && (
+            <Box
+              sx={{
+                position: "absolute",
+                top: "-60px",
+                width: "100%",
+                "& div": {
+                  margin: "2px",
+                },
+                "& a": {
+                  color: "#b9ad28",
+                },
+              }}
+            >
+              <Box>
+                Thank you for choosing{" "}
+                <Link href={currentNgoListItem?.website ?? "#!"}>
+                  {currentNgoListItem?.title ?? "the NGO"}
+                </Link>
+              </Box>
+              <Box>
+                An email has been sent to you with the payment link &
+                verification.
+              </Box>
             </Box>
-            <Box>
-              An email has been sent to you with the payment link &
-              verification.
-            </Box>
-          </Box>
-        )}
-        <TableStructure data={ngoData} keys={NGO_DATA_KEYS} />
+          )}
+          <TableStructure data={ngoData} keys={NGO_DATA_KEYS} />
+        </Box>
       </Box>
     </Box>
   )
