@@ -56,7 +56,14 @@ const DonatePage = ({ content, environment, ngoData }: DonatePageProps) => {
       <Box
         component="h1"
         className="cormorant"
-        sx={{ textAlign: "center", fontSize: "48px" }}
+        sx={{
+          textAlign: "center",
+          fontSize: {
+            xs: "30px",
+            md: "40px",
+            lg: "48px",
+          },
+        }}
       >
         Wish to be a helping hand?
       </Box>

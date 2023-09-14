@@ -29,7 +29,7 @@ const DonateButton = ({ row }: any) => {
 
   const donateButtonHandler = useCallback(() => {
     setEmailPopup(true)
-  }, [email])
+  }, [])
 
   useEffect(() => {
     dispatch(resetDonateToSuccess())
