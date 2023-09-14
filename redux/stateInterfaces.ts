@@ -1,4 +1,8 @@
-import { ContactFormData, GenericCardItem } from "../utils/interfaces"
+import {
+  ContactFormData,
+  GenericCardItem,
+  GenericDonateListItem,
+} from "../utils/interfaces"
 
 export type ContentfulVariable = { [key: string]: any }
 
@@ -21,4 +25,6 @@ export interface ContactStateType {
 export interface NgoStateType {
   ngoList: any[] // eslint-disable-line
   ngoCardDataList: GenericCardItem[] // eslint-disable-line
+  currentNgoListItem: GenericDonateListItem | null
+  donateToSuccess: boolean
 }

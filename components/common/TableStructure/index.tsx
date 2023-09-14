@@ -9,11 +9,13 @@ import {
 } from "@mui/material"
 import CustomSelectMenu from "../CustomSelectMenu"
 import { styles } from "./styles"
+import DonateButton from "../Buttons/DonateButton"
 
 interface TableStructureProps {
   data: any[]
   keys: any[]
   selectMenuKeys?: string[]
+  options?: { [key: string]: any }
 }
 
 const TableStructure = ({
@@ -37,10 +39,11 @@ const TableStructure = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row: any, index: number) => {
+            {data?.map((row: any, index: number) => {
+              const extraKeys = ["sno", "status", "donate"]
               return (
                 <TableRow key={row.ucid} hover>
-                  {keys.map((item: any) => {
+                  {keys?.map((item: any) => {
                     const cellData = row[`${item.fk}`]
                     return (
                       <TableCell
@@ -56,8 +59,8 @@ const TableStructure = ({
                           />
                         )}
                         {item.fk === "sno" && `#${index + 1}`}
-                        {item.fk !== "sno" &&
-                          item.fk !== "status" &&
+                        {item.fk === "donate" && <DonateButton row={row} />}
+                        {!extraKeys.includes(item.fk) &&
                           (cellData === "" ? "-" : cellData)}
                       </TableCell>
                     )
