@@ -57,6 +57,39 @@ export const CONTACT_LIST_KEYS: DataTableKeys[] = [
   },
 ]
 
+export const NGO_DATA_KEYS: DataTableKeys[] = [
+  {
+    fk: "donate",
+    key: "",
+    id: 6,
+  },
+  {
+    fk: "title",
+    key: "Title",
+    id: 0,
+  },
+  {
+    fk: "contactNumber",
+    key: "Contact Number",
+    id: 1,
+  },
+  {
+    fk: "founder",
+    key: "Founder",
+    id: 2,
+  },
+  {
+    fk: "fundsCollected",
+    key: "Funds Collected",
+    id: 4,
+  },
+  {
+    fk: "fundGoals",
+    key: "Fund Goal",
+    id: 5,
+  },
+]
+
 export const CONTACT_STATUS_TYPES = [
   "Contacted",
   "Recontact",

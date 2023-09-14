@@ -17,18 +17,15 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   const [routeLoader, setRouteLoader] = useState<boolean>(false)
   useEffect(() => {
-    Router.events.on("routeChangeStart", (e) => {
-      console.log("Start" + e)
+    Router.events.on("routeChangeStart", () => {
       setRouteLoader(true)
     })
 
-    Router.events.on("routeChangeComplete", (e) => {
-      console.log("End" + e)
+    Router.events.on("routeChangeComplete", () => {
       setRouteLoader(false)
     })
 
-    Router.events.on("routeChangeError", (e) => {
-      console.log(e)
+    Router.events.on("routeChangeError", () => {
       setRouteLoader(false)
     })
   }, [Router])

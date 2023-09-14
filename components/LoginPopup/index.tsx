@@ -105,8 +105,9 @@ const LoginPopup = () => {
             localStorage.setItem("isAuthenticated", "true")
 
             dispatch(toggleMenuList(false))
+            dispatch(toggleLoginDialog())
 
-            router.push("/admin")
+            router.push("/admin/contacts")
           })
           .catch((err) => {
             setLoginLoader(false)

@@ -1,7 +1,7 @@
 import { DocumentData, collection, getDocs } from "firebase/firestore"
 import { firestore } from "../../firebase/config"
 import { FIREBASE_COLLECTIONS_LIST } from "../../utils/constants"
-import { GenericCardItem } from "../../utils/interfaces"
+import { GenericCardItem, GenericDonateListItem } from "../../utils/interfaces"
 
 export const getNgoDetails = async () => {
   const collection_ref = collection(firestore, FIREBASE_COLLECTIONS_LIST.NGOS)
@@ -34,6 +34,34 @@ export const getNgoCardDetails = async () => {
       url: ngo.website,
       desc: ngo.briefDescription,
       image: ngo.mainNGOImage,
+    }
+
+    data.push(dataItem)
+  })
+
+  return data
+}
+
+export const getNgoListDetails = async () => {
+  const collection_ref = collection(firestore, FIREBASE_COLLECTIONS_LIST.NGOS)
+
+  const res = await getDocs(collection_ref)
+
+  const data: DocumentData[] = []
+
+  res.forEach((doc) => {
+    const resdata = doc.data()
+    const ngo = { ...resdata }
+
+    const dataItem: GenericDonateListItem = {
+      ucid: ngo.id ?? 1,
+      title: ngo?.name ?? "",
+      fundCampaign: ngo?.fundCampaign ?? "",
+      fundsCollected: ngo?.fundsCollected ?? "",
+      fundGoals: ngo?.fundGoals ?? "",
+      contactNumber: ngo?.contactNumber?.join(", ") ?? "",
+      founder: ngo?.founder?.name ?? "",
+      website: ngo?.website ?? "",
     }
 
     data.push(dataItem)

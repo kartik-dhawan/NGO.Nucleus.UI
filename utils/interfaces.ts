@@ -15,6 +15,13 @@ export interface AdminPageProps {
   contacts?: ContactFormData[]
 }
 
+export interface DonatePageProps {
+  content: ContentfulVariable
+  environment: ContentFulENV
+  contacts?: ContactFormData[]
+  ngoData: any
+}
+
 export interface ChildrenType {
   children: ReactNode
 }
@@ -31,6 +38,17 @@ export interface GenericCardItem {
   url?: string
   image: string
   desc: string
+}
+
+export interface GenericDonateListItem {
+  ucid: string
+  title: string
+  fundsCollected: string
+  contactNumber: string[]
+  fundCampaign: string
+  fundGoals: string
+  founder: string
+  website: string
 }
 
 // other interfaces
