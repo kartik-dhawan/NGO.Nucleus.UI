@@ -49,7 +49,11 @@ const HeroSection = () => {
                   <PrimaryButton
                     icon={<ArrowRightAltIcon />}
                     onClick={() => {
-                      router.push("/ngos")
+                      if (index === 0) {
+                        router.push("/ngos")
+                      } else {
+                        router.push("/programs")
+                      }
                     }}
                   >
                     {content.heroLandingSectionButtonText[index]}

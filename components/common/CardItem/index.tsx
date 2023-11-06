@@ -19,7 +19,8 @@ interface NgoCardProps {
 
 const CardItem = ({ cardData }: NgoCardProps) => {
   const router = useRouter()
-  const url = router.asPath === "/ngos" ? `/ngo/${cardData.id}` : cardData.url
+  // const url = router.asPath === "/ngos" ? `/ngo/${cardData.id}` : cardData.url
+  const url = cardData.url
 
   return (
     <Card sx={styles.ngoCardWrapper} className="robotoCondensed">
