@@ -32,6 +32,12 @@ export interface NgosPageProps {
   ngoCardData: any
 }
 
+export interface ProgramsPageProps {
+  content: ContentfulVariable
+  programsList: any
+  programsCardData: any
+}
+
 export interface GenericCardItem {
   id: string
   title: string

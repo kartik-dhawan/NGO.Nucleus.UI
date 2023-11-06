@@ -69,3 +69,31 @@ export const getNgoListDetails = async () => {
 
   return data
 }
+
+export const getProgramsCardDetails = async () => {
+  const collection_ref = collection(
+    firestore,
+    FIREBASE_COLLECTIONS_LIST.PROGRAMS,
+  )
+
+  const res = await getDocs(collection_ref)
+
+  const data: DocumentData[] = []
+
+  res.forEach((doc) => {
+    const resdata = doc.data()
+    const program = { ...resdata }
+
+    const dataItem: GenericCardItem = {
+      id: program.id,
+      title: program.name,
+      url: program.website,
+      desc: program.description,
+      image: program.image,
+    }
+
+    data.push(dataItem)
+  })
+
+  return data
+}
