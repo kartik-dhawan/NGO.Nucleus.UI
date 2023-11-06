@@ -30,3 +30,8 @@ export interface NgoStateType {
   emailPopup: boolean
   email: string
 }
+
+export interface ProgramsStateType {
+  programsList: any[] // eslint-disable-line
+  programsCardDataList: GenericCardItem[] // eslint-disable-line
+}

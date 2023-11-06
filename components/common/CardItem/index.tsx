@@ -19,7 +19,8 @@ interface NgoCardProps {
 
 const CardItem = ({ cardData }: NgoCardProps) => {
   const router = useRouter()
-  const url = `/ngo/${cardData.id}`
+  // const url = router.asPath === "/ngos" ? `/ngo/${cardData.id}` : cardData.url
+  const url = cardData.url
 
   return (
     <Card sx={styles.ngoCardWrapper} className="robotoCondensed">
@@ -29,7 +30,7 @@ const CardItem = ({ cardData }: NgoCardProps) => {
       <CardContent>
         <Box sx={styles.ngoCardTitle}>
           {cardData.title}
-          {cardData.url && (
+          {router.asPath === "/ngos" && cardData.url && (
             <Link href={cardData.url} target="_blank">
               <OpenInNewIcon />
             </Link>
@@ -37,19 +38,17 @@ const CardItem = ({ cardData }: NgoCardProps) => {
         </Box>
         <Box sx={styles.ngoCardDescription}>{cardData.desc}</Box>
       </CardContent>
-      {router.asPath === "/ngos" && (
-        <CardActions sx={{ paddingBottom: 0 }}>
-          <Button
-            className="robotoCondensed"
-            sx={styles.ngoCardReadMoreButton}
-            onClick={() => {
-              window.open(url, "_blank")
-            }}
-          >
-            Read More
-          </Button>
-        </CardActions>
-      )}
+      <CardActions sx={{ paddingBottom: 0 }}>
+        <Button
+          className="robotoCondensed"
+          sx={styles.ngoCardReadMoreButton}
+          onClick={() => {
+            window.open(url, "_blank")
+          }}
+        >
+          Read More
+        </Button>
+      </CardActions>
     </Card>
   )
 }
