@@ -18,6 +18,7 @@ export const AUTHENTICATED_ADMIN_PAGES = [
 export const FIREBASE_COLLECTIONS_LIST = {
   CONTACTS: "userContactDetails",
   NGOS: "ngos",
+  PROGRAMS: "programs",
 }
 
 export const API_END_POINTS = {
@@ -53,6 +54,39 @@ export const CONTACT_LIST_KEYS: DataTableKeys[] = [
   {
     fk: "status",
     key: "Status",
+    id: 5,
+  },
+]
+
+export const NGO_DATA_KEYS: DataTableKeys[] = [
+  {
+    fk: "donate",
+    key: "",
+    id: 6,
+  },
+  {
+    fk: "title",
+    key: "Title",
+    id: 0,
+  },
+  {
+    fk: "contactNumber",
+    key: "Contact Number",
+    id: 1,
+  },
+  {
+    fk: "founder",
+    key: "Founder",
+    id: 2,
+  },
+  {
+    fk: "fundsCollected",
+    key: "Funds Collected",
+    id: 4,
+  },
+  {
+    fk: "fundGoals",
+    key: "Fund Goal",
     id: 5,
   },
 ]

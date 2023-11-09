@@ -67,7 +67,7 @@ const LoginPopup = () => {
   const closePopupHandler = useCallback(() => {
     dispatch(toggleLoginDialog())
     dispatch(toggleMenuList(false))
-    router.push("/")
+    router.push(router.asPath)
   }, [dispatch, router])
 
   const loginHandler = useCallback(() => {
@@ -105,8 +105,9 @@ const LoginPopup = () => {
             localStorage.setItem("isAuthenticated", "true")
 
             dispatch(toggleMenuList(false))
+            dispatch(toggleLoginDialog())
 
-            router.push("/admin")
+            router.push("/admin/contacts")
           })
           .catch((err) => {
             setLoginLoader(false)

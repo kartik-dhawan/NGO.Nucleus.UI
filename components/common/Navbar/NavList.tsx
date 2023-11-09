@@ -73,7 +73,7 @@ const NavList = ({ orientation, toggleMenu }: NavListProps) => {
                 ? AUTHENTICATED_ADMIN_PAGES.includes(router.asPath)
                   ? "/logout"
                   : isAuthenticated
-                  ? "/admin"
+                  ? "/admin/contacts"
                   : "#!"
                 : item.url
             }

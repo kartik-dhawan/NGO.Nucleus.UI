@@ -3,13 +3,15 @@ import { GetServerSideProps } from "next"
 import { client } from "../../utils/contentful/client"
 import { NgosPageProps } from "../../utils/interfaces"
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setContent } from "../../redux/slices/contentSlice"
 import { getNgoCardDetails } from "../../lib/methods/getNgoDetails"
 import { setNgoCardDataList } from "../../redux/slices/ngoSlice"
 import { Box, Divider } from "@mui/material"
 import Head from "next/head"
 import CardList from "../../components/common/CardList"
+import { RootType } from "../../redux/store"
+import LoginPopup from "../../components/LoginPopup"
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const contentResponse: EntryCollection<EntrySkeletonType, undefined, string> =
@@ -35,6 +37,8 @@ const Ngos = ({ content, ngoCardData }: NgosPageProps) => {
 
   const { ngoPageTitle, ngoPageSubtitle } = content
 
+  const { loginDialog } = useSelector((state: RootType) => state.authSlice)
+
   return (
     <Box sx={{ padding: "4rem 2rem 2rem", boxSizing: "border-box" }}>
       <Head>
@@ -42,6 +46,7 @@ const Ngos = ({ content, ngoCardData }: NgosPageProps) => {
         <meta name="description" content="A hub for all NGOs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {loginDialog && <LoginPopup />}
       <Box
         component="h2"
         sx={{

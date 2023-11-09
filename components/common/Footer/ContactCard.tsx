@@ -60,8 +60,6 @@ const ContactCard = ({ content }: ContactCardProps) => {
     setFormErrorState(false)
     setGetACallLoader(true)
 
-    console.log(contactFormData.email)
-
     contactFormData.email === "" /* eslint-disable-line */ ||
     isEmailInValidFormat(contactFormData.email)
       ? addDoc(collectionRef, {
@@ -70,8 +68,7 @@ const ContactCard = ({ content }: ContactCardProps) => {
           ucid: uuidv4(),
           status: "Pending",
         })
-          .then((res) => {
-            console.log(res)
+          .then(() => {
             setGetACallLoader(false)
             setFormSuccessIcon(true)
             setContactFormData(initialState)

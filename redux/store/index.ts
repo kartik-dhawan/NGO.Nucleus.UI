@@ -3,6 +3,7 @@ import contentSlice from "../slices/contentSlice"
 import authSlice from "../slices/authSlice"
 import contactSlice from "../slices/contacts"
 import ngoSlice from "../slices/ngoSlice"
+import programSlice from "../slices/programSlice"
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     authSlice,
     contactSlice,
     ngoSlice,
+    programSlice,
   },
 })
 
